@@ -1,0 +1,2 @@
+# WhatToDo
+Angular front-end
