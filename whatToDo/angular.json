@@ -128,5 +128,10 @@
   "defaultProject": "angular-registration-login-example",
   "cli": {
     "analytics": "0f32be33-d5a6-4eb2-9d01-c5ca6b0ba62c"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
