@@ -9,7 +9,9 @@
 </nav>
 
 <!-- main app container -->
-<div class="app-container" [ngClass]="{ 'bg-light': user }">
-    <alert></alert>
-    <router-outlet></router-outlet>
+<div [ngStyle]="{backgroundImage:'url(./shared/background.jpg)'}" >
+    <div class="app-container" [ngClass]="{ 'bg-light': user }">
+        <alert></alert>
+        <router-outlet></router-outlet>
+    </div>
 </div>
