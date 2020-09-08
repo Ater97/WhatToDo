@@ -16,8 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import 'hammerjs';
-
+import 'hammerjs';;
+import { ActivityFormComponent } from './activity-form/activity-form.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -31,8 +31,8 @@ import 'hammerjs';
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
-    ],
+        HomeComponent,
+        ActivityFormComponent   ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
