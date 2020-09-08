@@ -1,1 +1,35 @@
-<p>question works!</p>
+<mat-toolbar>
+    <span>Ask what to do</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form">
+            <mat-card-content>
+                <form class="my-form">
+                   <mat-form-field class="full-width">
+                          <mat-label>Paticipants</mat-label>
+                          <input  matInput  placeholder="First name"  name="fname"  required>
+                       </mat-form-field>
+                       <mat-form-field class="full-width">
+                          <mat-label>Budget</mat-label>
+                          <input  matInput  placeholder="Last Name" name="lname"  required>
+                       </mat-form-field>
+                       <mat-form-field class="full-width">
+                          <mat-label>Time</mat-label>
+                          <input  matInput  placeholder="Email" name="email">
+                       </mat-form-field>
+
+                       <mat-radio-group aria-label="Intensity of activity">
+                        <mat-radio-button value="1">Low</mat-radio-button>
+                        <mat-radio-button value="2">Normal</mat-radio-button>
+                        <mat-radio-button value="3">Hardcore</mat-radio-button>
+                      </mat-radio-group>
+   
+                </form>
+              </mat-card-content>
+        </form>
+     </mat-card-content>
+     <mat-card-actions>
+       <!-- <button mat-raised-button (click)="register()" color="primary">Ask</button>-->
+     </mat-card-actions>
+  </mat-card>
