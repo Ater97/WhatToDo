@@ -1,50 +1,38 @@
-﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
-import { AlertComponent } from './_components';
-import { HomeComponent } from './home';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar'; 
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-import 'hammerjs';;
-import { ActivityFormComponent } from './activity-form/activity-form.component'
-import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { QuestionComponent } from './question/question.component';
+import { RegistrationComponentComponent } from './registration-component/registration-component.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { MyMaterialModule } from  './material.module';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        FlexLayoutModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule
-    ],
-    declarations: [
-        AppComponent,
-        AlertComponent,
-        HomeComponent,
-        ActivityFormComponent   ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // provider used to create fake backend
-        fakeBackendProvider
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    QuestionComponent,
+    RegistrationComponentComponent,
+    LoginComponentComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MyMaterialModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: '/', pathMatch: 'full' },
+      { path: 'register', component: RegistrationComponentComponent },
+      { path: 'login', component: LoginComponentComponent },
+       
+     
+    ]),
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { };
+export class AppModule { }

@@ -1,17 +1,10 @@
-﻿<!-- nav -->
-<mat-toolbar color="primary"> <span>What to do</span> </mat-toolbar>
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
-
-<!-- main app container -->
-<div [ngStyle]="{backgroundImage:'url(./shared/background.jpg)'}" >
-    <div class="app-container" [ngClass]="{ 'bg-light': user }">
-        <alert></alert>
-        <router-outlet></router-outlet>
-    </div>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--  <span>HOME</span> -->
+     <span><a href="/">HOME</a></span>
+     <span class="spacer"></span>
+     <a  mat-button  routerLink="/register">Register</a>
+     <a  mat-button  routerLink="/login">Login</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
