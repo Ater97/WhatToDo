@@ -18,6 +18,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import 'hammerjs';;
 import { ActivityFormComponent } from './activity-form/activity-form.component'
+import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -26,7 +28,10 @@ import { ActivityFormComponent } from './activity-form/activity-form.component'
         AppRoutingModule,
         BrowserAnimationsModule,
         MatToolbarModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule
     ],
     declarations: [
         AppComponent,

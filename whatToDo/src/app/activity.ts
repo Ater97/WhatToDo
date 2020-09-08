@@ -8,3 +8,8 @@ export class Activity {
     ) {  }
   
   }
+  //cantdad de personas
+  //intensidad
+  //presupuesto
+  //tiempo
+  //habilidades previas
