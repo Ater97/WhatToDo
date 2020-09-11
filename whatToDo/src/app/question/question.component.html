@@ -19,7 +19,10 @@
                           <input  matInput  placeholder="Email" name="email">
                        </mat-form-field>
 
+                       
+                       <mat-label>Intensity of activity: </mat-label>
                        <mat-radio-group aria-label="Intensity of activity">
+                        
                         <mat-radio-button value="1">Low</mat-radio-button>
                         <mat-radio-button value="2">Normal</mat-radio-button>
                         <mat-radio-button value="3">Hardcore</mat-radio-button>
@@ -30,6 +33,7 @@
         </form>
      </mat-card-content>
      <mat-card-actions>
-       <!-- <button mat-raised-button (click)="register()" color="primary">Ask</button>-->
+      <button mat-raised-button routerLink="app/recomendation" color="primary">Ask</button>
+       <!-- <button mat-raised-button (click)="askQuestion()" color="primary">Ask</button>-->
      </mat-card-actions>
   </mat-card>

@@ -1,0 +1,28 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+        <mat-toolbar color="secondary">
+            <h3>Recomendations</h3>
+        </mat-toolbar>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <mat-grid-list cols="2" rowHeight="200px">
+      <mat-grid-tile *ngFor="let activity of activity">
+        <img height="200px" src={{activity.image}} alt={{activity.name}}>
+        <mat-grid-tile-footer>
+          <h1>{{activity.name | uppercase}}    </h1>
+          <button mat-fab aria-label="Example icon-button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <!--<app-dishdetail></app-dishdetail>-->
+</div>

@@ -9,13 +9,15 @@ import { RegistrationComponentComponent } from './registration-component/registr
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { MyMaterialModule } from  './material.module';
 import { RouterModule, Routes } from '@angular/router';
+import { RecomendationComponent } from './recomendation/recomendation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     RegistrationComponentComponent,
-    LoginComponentComponent
+    LoginComponentComponent,
+    RecomendationComponent
   ],
   imports: [
     BrowserModule,
