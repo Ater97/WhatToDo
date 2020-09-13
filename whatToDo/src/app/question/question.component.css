@@ -16,4 +16,7 @@
 .mat-card{
   text-align: center;
 }
-  
+
+.mat-fab{
+  margin: 15px 0;
+}
