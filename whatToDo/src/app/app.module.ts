@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionComponent } from './question/question.component';
-import { RegistrationComponentComponent } from './registration-component/registration-component.component';
+import { RegistrationComponentComponent } from './registration/registration-component.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { MyMaterialModule } from  './material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RecomendationComponent } from './recomendation/recomendation.component';
+import { RecomendationDetailComponent } from './recomendation-detail/recomendation-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RecomendationComponent } from './recomendation/recomendation.component'
     QuestionComponent,
     RegistrationComponentComponent,
     LoginComponentComponent,
-    RecomendationComponent
+    RecomendationComponent,
+    RecomendationDetailComponent
   ],
   imports: [
     BrowserModule,
