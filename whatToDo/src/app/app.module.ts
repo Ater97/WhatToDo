@@ -11,6 +11,7 @@ import { MyMaterialModule } from  './material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RecomendationComponent } from './recomendation/recomendation.component';
 import { RecomendationDetailComponent } from './recomendation-detail/recomendation-detail.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RecomendationDetailComponent } from './recomendation-detail/recomendati
     RegistrationComponentComponent,
     LoginComponentComponent,
     RecomendationComponent,
-    RecomendationDetailComponent
+    RecomendationDetailComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,9 @@ import { RecomendationDetailComponent } from './recomendation-detail/recomendati
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponentComponent },
       { path: 'login', component: LoginComponentComponent },
+      { path: 'favorites', component: FavoritesComponent },
+      { path: 'recomendation', component: RecomendationComponent },
+      { path: 'question', component: QuestionComponent },
        
      
     ]),
