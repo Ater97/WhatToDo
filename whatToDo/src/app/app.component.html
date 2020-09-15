@@ -2,17 +2,15 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <!--  <span>HOME</span> -->
-     <span><a  mat-button routerLink="/question">Ask what to do</a></span>
+     <span><a  mat-button routerLink="/question" routerLinkActive="active">Ask what to do</a>
+      <a  mat-button  routerLink="/favorites" routerLinkActive="active">My favorites</a></span>
      <span class="spacer"></span>
-     <a  mat-button  routerLink="/register">Register</a>
-     <a  mat-button  routerLink="/login">Login</a>
-     <a  mat-button  routerLink="/favorites">My favorites</a>
+     <a  mat-button  routerLink="/register" routerLinkActive="active">Register</a>
+     <a  mat-button  routerLink="/login" routerLinkActive="active">Login</a>
+     
   </mat-toolbar-row>
 </mat-toolbar>
-<div style="margin: auto;
-width: 90%;
-padding: 10px; ">
+<div class="main">
   <router-outlet></router-outlet>
+  
 </div>
-<!--<app-question></app-question>-->
-<!--<app-recomendation></app-recomendation>-->

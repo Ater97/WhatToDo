@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionComponent } from './question/question.component';
-import { RegistrationComponentComponent } from './registration/registration-component.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
 import { MyMaterialModule } from  './material.module';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -19,8 +19,8 @@ import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.compo
   declarations: [
     AppComponent,
     QuestionComponent,
-    RegistrationComponentComponent,
-    LoginComponentComponent,
+    RegistrationComponent,
+    LoginComponent,
     RecomendationComponent,
     RecomendationDetailComponent,
     FavoritesComponent,
@@ -35,13 +35,11 @@ import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.compo
     MyMaterialModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
-      { path: 'register', component: RegistrationComponentComponent },
-      { path: 'login', component: LoginComponentComponent },
+      { path: 'register', component: RegistrationComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'recomendation', component: RecomendationComponent },
       { path: 'question', component: QuestionComponent },
-       
-     
     ]),
   ],
   providers: [ActivityService],

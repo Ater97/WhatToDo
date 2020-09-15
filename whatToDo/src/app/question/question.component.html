@@ -13,17 +13,19 @@ padding: 10px;">
                         <mat-label>Paticipants</mat-label>
                         <input  matInput type="number"  placeholder="1"  min="1" name="participants"  required>
                      </mat-form-field>
-                  <mat-form-field class="full-width">
-                     <mat-label>Budget</mat-label>
-                     <input  matInput type="number" placeholder="$10" name="Budget"  >
-                  </mat-form-field>
+                     <mat-form-field class="full-width">
+                        <mat-label>Budget</mat-label>
+                        <input matInput type="number" name = "budget" >
+                        <span matPrefix>$&nbsp;</span>
+                        <span matSuffix>.00</span>
+                      </mat-form-field>
                   <mat-form-field class="full-width">
                      <mat-label>Time</mat-label>
-                     <input  matInput type="time" placeholder="3 hour" name="Time">
+                     <input  matInput type="time" placeholder="1:00" name="Time">
                   </mat-form-field>
-
+                  <br>
                   <mat-label>Intensity of activity: </mat-label>
-                  <mat-radio-group aria-label="Intensity of activity" >
+                  <mat-radio-group aria-label="Intensity of activity"  class="full-width">
                   
                      <mat-radio-button value="1">Low</mat-radio-button>
                      <mat-radio-button value="2">Normal</mat-radio-button>

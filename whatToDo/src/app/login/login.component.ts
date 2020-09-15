@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-login-component',
-  templateUrl: './login-component.component.html',
-  styleUrls: ['./login-component.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponentComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
@@ -20,7 +20,7 @@ export class LoginComponentComponent implements OnInit {
   login() : void {
 
     if(this.username == 'admin' && this.password == 'admin'){
-     this.router.navigate(["user"]);
+     this.router.navigate(["question"]);
     }else {
       alert("Invalid credentials");
     }
