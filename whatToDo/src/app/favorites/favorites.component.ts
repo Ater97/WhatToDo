@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Activity } from '../shared/activity';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-favorites',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor() { }
+  favorites: Activity[];
+  selectedActivity: Activity;
 
-  ngOnInit(): void {
+  constructor(private favoriteService: FavoriteService) { }
+  
+  ngOnInit() {
+    this.favorites = this.favoriteService.getFavorites();
   }
 
+  onSelect(activity: Activity) {
+    this.selectedActivity = activity;
+  }
 }

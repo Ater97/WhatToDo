@@ -13,7 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecomendationComponent } from './recomendation/recomendation.component';
 import { RecomendationDetailComponent } from './recomendation-detail/recomendation-detail.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-
+import { ActivityService } from './services/activity.service';
+import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     LoginComponentComponent,
     RecomendationComponent,
     RecomendationDetailComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    FavoriteDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
      
     ]),
   ],
-  providers: [],
+  providers: [ActivityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

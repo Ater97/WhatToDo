@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from '../shared/activity';
-import { ACTIVITIES } from '../shared/activities';
+import { ActivityService } from '../services/activity.service';
 
 @Component({
   selector: 'app-recomendation',
@@ -9,14 +9,16 @@ import { ACTIVITIES } from '../shared/activities';
 })
 export class RecomendationComponent implements OnInit {
 
-  activities: Activity[] = ACTIVITIES;
+  activities: Activity[];
   selectedActivity: Activity;
 
-  ngOnInit(): void {
-  }
+  constructor(private activityService: ActivityService) { }
   
+  ngOnInit() {
+    this.activities = this.activityService.getActivities();
+  }
+
   onSelect(activity: Activity) {
     this.selectedActivity = activity;
   }
-
 }
