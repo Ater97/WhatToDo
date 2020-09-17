@@ -9,3 +9,10 @@
     align-items: center;
     flex-direction: column;
   }
+
+.turn-green {
+    background-color: green;
+}
+.btn-default{
+  background-color: gray;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Activity } from '../shared/activity';
+import { FavoriteActivity } from '../shared/favoriteActivity';
 import { FavoriteService } from '../services/favorite.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { FavoriteService } from '../services/favorite.service';
 })
 export class FavoritesComponent implements OnInit {
 
-  favorites: Activity[];
-  selectedActivity: Activity;
+  favorites: FavoriteActivity[];
+  selectedActivity: FavoriteActivity;
 
   constructor(private favoriteService: FavoriteService) { }
   
@@ -18,7 +18,7 @@ export class FavoritesComponent implements OnInit {
     this.favorites = this.favoriteService.getFavorites();
   }
 
-  onSelect(activity: Activity) {
+  onSelect(activity: FavoriteActivity) {
     this.selectedActivity = activity;
   }
 }

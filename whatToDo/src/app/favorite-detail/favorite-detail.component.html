@@ -23,6 +23,11 @@
             <button mat-fab aria-label="delete"  (click)="removeFromFavorites(activity)">
               <mat-icon>delete </mat-icon>
             </button>
+
+            <button mat-fab (click)="markAsDone(activity)" [ngClass]= bntStyle>
+              <mat-icon>done_all </mat-icon>
+            </button>
+
           </mat-card-actions>
         </mat-card>
       </div>

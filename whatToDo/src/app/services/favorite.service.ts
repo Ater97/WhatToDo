@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Activity } from '../shared/activity';
+import { FavoriteActivity } from '../shared/favoriteActivity';
 import { FAVORITES } from '../shared/favorites';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class FavoriteService {
 
   constructor() { }
 
-  getFavorites(): Activity[] {
+  getFavorites(): FavoriteActivity[] {
     return FAVORITES;
   }
 }
