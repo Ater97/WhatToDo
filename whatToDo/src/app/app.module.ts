@@ -15,6 +15,8 @@ import { RecomendationDetailComponent } from './recomendation-detail/recomendati
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ActivityService } from './services/activity.service';
 import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,

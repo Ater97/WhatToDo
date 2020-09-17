@@ -6,26 +6,27 @@ padding: 10px;">
   </mat-toolbar>
   <mat-card class="my-card" id = "mat-card">
      <mat-card-content>
-        <form class="my-form">
+        <form class="my-form" [formGroup]="questionForm" autocomplete="off" novalidate (ngSubmit)="askQuestion(questionForm.value)">
             <mat-card-content>
                 <form class="my-form">
                    <mat-form-field class="full-width">
                         <mat-label>Paticipants</mat-label>
-                        <input  matInput type="number"  placeholder="1"  min="1" name="participants"  required>
+                        <input  matInput type="number"  placeholder="1"  min="1" formControlName="participants" name="participants"  required>
                      </mat-form-field>
                      <mat-form-field class="full-width">
                         <mat-label>Budget</mat-label>
-                        <input matInput type="number" name = "budget" >
+                        <input matInput type="number" formControlName="budget" name = "budget" min="0.0">
                         <span matPrefix>$&nbsp;</span>
                         <span matSuffix>.00</span>
                       </mat-form-field>
                   <mat-form-field class="full-width">
                      <mat-label>Time</mat-label>
-                     <input  matInput type="time" placeholder="1:00" name="Time">
+                     <input  matInput type="number" placeholder="1:00" min="0.0" formControlName="time" name="time">
+                     <span matSuffix>hours</span>
                   </mat-form-field>
                   <br>
                   <mat-label>Intensity of activity: </mat-label>
-                  <mat-radio-group aria-label="Intensity of activity"  class="full-width">
+                  <mat-radio-group aria-label="Intensity of activity" formControlName="intensity" class="full-width">
                   
                      <mat-radio-button value="1">Low</mat-radio-button>
                      <mat-radio-button value="2">Normal</mat-radio-button>
@@ -37,7 +38,7 @@ padding: 10px;">
         </form>
      </mat-card-content>
      <mat-card-actions>
-      <button mat-raised-button routerLink="/recomendation" color="primary">Ask</button>
+      <button mat-raised-button [disabled]="!questionForm.valid" color="primary">Ask</button>
        <!-- <button mat-raised-button (click)="askQuestion()" color="primary">Ask</button>-->
      </mat-card-actions>
   </mat-card>
