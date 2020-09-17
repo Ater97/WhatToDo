@@ -1,6 +1,4 @@
-<div style="margin: auto;
-width: 90%;
-padding: 10px;">
+<div class="main">
    <mat-toolbar>
       <span>Ask what to do</span>
    </mat-toolbar>
@@ -13,7 +11,7 @@ padding: 10px;">
                   <mat-label>Paticipants</mat-label>
                   <input matInput type="number" placeholder="1" min="1" formControlName="participants"
                      name="participants" required>
-                  <mat-hint align="end">How many people do you need for your activity?</mat-hint>
+                  <mat-hint align="end">How many of you are there?</mat-hint>
                   <mat-error *ngIf="hasError('participants', 'required')">Number of participants is required</mat-error>
                   <mat-error *ngIf="hasError('participants', 'max')">Maximum 30 people</mat-error>
                </mat-form-field>

@@ -15,8 +15,16 @@
 }
 .mat-card{
   text-align: center;
+  background: #F9F7F0;
 }
 
-.mat-fab{
-  margin: 15px 0;
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mat-toolbar{
+  background-color: #F9F7F0;
 }

@@ -9,8 +9,8 @@ export const ACTIVITIES: Activity[] = [
     },
     {
       id: '1',
-      name: 'LSD',
-      image: '/assets/images/lsd.png',
+      name: 'Camping',
+      image: '/assets/images/camping.jpg',
       description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce'
     },
     {
@@ -22,7 +22,7 @@ export const ACTIVITIES: Activity[] = [
     {
       id: '3',
       name: 'Archery',
-      image: '/assets/images/archery.png',
+      image: '/assets/images/archery.jpg',
       description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
     },
     {

@@ -14,4 +14,8 @@ export class FavoriteDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public removeFromFavorites = (activityValue)=> {
+    alert(activityValue.id);
+  }
+
 }

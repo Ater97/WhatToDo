@@ -3,11 +3,20 @@
   }
 
 .active {
-  background:  #4527A0;
+  background:  #F29F05;
 }
 
 .Main {
   margin: auto;
   width: 90%;
   padding: 10px;
+}
+
+.mat-toolbar{
+ background-color: #0186D1;
+}
+
+.font{
+font-size:  100%;
+font-weight: bold;
 }

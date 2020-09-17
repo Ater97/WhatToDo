@@ -6,6 +6,7 @@ import { Activity } from '../shared/activity';
   templateUrl: './recomendation-detail.component.html',
   styleUrls: ['./recomendation-detail.component.css']
 })
+
 export class RecomendationDetailComponent implements OnInit {
 
   @Input()
@@ -14,4 +15,7 @@ export class RecomendationDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public addToFavorites = (activityValue)=> {
+    alert(activityValue.id);
+  }
 }
