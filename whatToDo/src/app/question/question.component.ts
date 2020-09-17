@@ -16,13 +16,17 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.questionForm = new FormGroup({
-      participants: new FormControl('', [Validators.required, Validators.min(1), Validators.max(30)]),
-      budget: new FormControl('', [Validators.required, Validators.min(0)]),
-      time: new FormControl('', [Validators.required, Validators.min(1)]),
+      participants: new FormControl('1', [Validators.required, Validators.min(1), Validators.max(30)]),
+      budget: new FormControl('0', [Validators.required, Validators.min(0)]),
+      time: new FormControl('1', [Validators.required, Validators.min(1)]),
       intensity: new FormControl('', [Validators.required, Validators.min(1)])
     });
   }
 
+  public hasError = (controlParticipants: string, errorParticipant: string) =>{
+    return this.questionForm.controls[controlParticipants].hasError(errorParticipant);
+  }
+  
   public askQuestion = (questionFormValue)=> {
     if (this.questionForm.valid) {
       this.executeQuestionCreation(questionFormValue);
