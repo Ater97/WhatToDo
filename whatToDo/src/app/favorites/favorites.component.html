@@ -1,25 +1,17 @@
-<div class="container"
-     fxLayout="column"
-     fxLayoutGap="10px">
+<div class="container" fxLayout="column" fxLayoutGap="10px">
 
-  <div fxFlex>
-    <div>
-        <mat-toolbar color="secondary">
-            <h3>My Favorites</h3>
-        </mat-toolbar>
-      <hr>
-    </div>
-  </div>
+  <mat-toolbar>
+  </mat-toolbar>
 
   <div fxFlex>
     <mat-grid-list cols="{{favorites.length}}" rowHeight="200px">
-      <mat-grid-tile *ngFor="let activity of favorites" (click) = onSelect(activity)>
+      <mat-grid-tile *ngFor="let activity of favorites" (click)=onSelect(activity)>
         <img height="200px" src={{activity.image}} alt={{activity.name}}>
         <mat-grid-tile-footer>
-          <h1>{{activity.name | uppercase}}</h1>  
+          <h1>{{activity.name | uppercase}}</h1>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <app-favorite-detail [activity] = "selectedActivity"></app-favorite-detail>
+  <app-favorite-detail [activity]="selectedActivity"></app-favorite-detail>
 </div>

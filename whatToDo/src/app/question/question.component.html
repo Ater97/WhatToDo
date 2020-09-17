@@ -1,6 +1,5 @@
 <div class="main">
    <mat-toolbar>
-      <span>Ask what to do</span>
    </mat-toolbar>
    <mat-card class="my-card" id="mat-card">
       <mat-card-content>
@@ -27,14 +26,16 @@
 
                <mat-form-field class="full-width">
                   <mat-label>Time</mat-label>
-                  <input matInput type="number" placeholder="1:00" min="0.0" formControlName="time" name="time" required>
+                  <input matInput type="number" placeholder="1:00" min="0.0" formControlName="time" name="time"
+                     required>
                   <span matSuffix>hours</span>
                   <mat-hint align="end">How many hours do you have available?</mat-hint>
                   <mat-error *ngIf="hasError('time', 'min')">At least 1 hour</mat-error>
                </mat-form-field>
                <br><br>
                <mat-label>Intensity of activity: </mat-label>
-               <mat-radio-group aria-label="Intensity of activity" formControlName="intensity" class="full-width" required>
+               <mat-radio-group aria-label="Intensity of activity" formControlName="intensity" class="full-width"
+                  required>
 
                   <mat-radio-button value="1">Low</mat-radio-button>
                   <mat-radio-button value="2">Normal</mat-radio-button>
