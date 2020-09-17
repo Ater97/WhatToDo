@@ -15,7 +15,7 @@ import { RecomendationDetailComponent } from './recomendation-detail/recomendati
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ActivityService } from './services/activity.service';
 import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.compo
     BrowserModule,
     BrowserAnimationsModule,
     MyMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponent },
