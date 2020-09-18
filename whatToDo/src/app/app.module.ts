@@ -17,6 +17,11 @@ import { ActivityService } from './services/activity.service';
 import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+/* Add Amplify imports */
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+//import awsconfig from './aws-exports.js';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,10 +37,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MyMaterialModule,
     ReactiveFormsModule,
+    AmplifyUIAngularModule,
+    
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponent },

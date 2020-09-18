@@ -8,6 +8,15 @@
      <a  mat-button  routerLink="/register" routerLinkActive="active" class="font">Register</a>
      <a  mat-button  routerLink="/login" routerLinkActive="active" class="font">Login</a>
      
+     <template>
+      <amplify-authenticator>
+        <div>
+          My App
+          <amplify-sign-out></amplify-sign-out>
+        </div>
+      </amplify-authenticator>
+    </template>
+
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="main">

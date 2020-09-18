@@ -4,6 +4,16 @@
     width: 100%;
   }
    
-  .full-width {
-    width: 100%;
-  }
+.full-width {
+  width: 100%;
+}
+.mat-toolbar{
+  background-color:transparent
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
