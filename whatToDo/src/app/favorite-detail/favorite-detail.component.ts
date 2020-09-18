@@ -10,8 +10,7 @@ export class FavoriteDetailComponent implements OnInit {
 
   @Input()
   activity: FavoriteActivity;
-  bntStyle: string = 'btn-default';
-
+  
   ngOnInit(): void {
    /* if (this.activity.completed)
       this.bntStyle = 'turn-green';
@@ -19,14 +18,16 @@ export class FavoriteDetailComponent implements OnInit {
       this.bntStyle = 'btn-default';*/
   }
 
+
   public removeFromFavorites = (activityValue) => {
     alert(activityValue.id);
   }
 
-  public markAsDone(activityValue) {
-
-    this.bntStyle = 'turn-green';
-    activityValue.completed = true;
+  public markAsDone =(activityValue) => {
+    if(activityValue.completed)
+      activityValue.completed = false;
+    else
+      activityValue.completed = true;
     alert(activityValue.id + "  " +activityValue.completed);
   }
 

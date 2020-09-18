@@ -24,9 +24,9 @@ export const FAVORITES: FavoriteActivity[] = [
     },
     {
       id: '3',
-      name: 'Eat',
-      image: '/assets/images/eat.png',
-      description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
+      name: 'Camping',
+      image: '/assets/images/camping.jpg',
+      description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
       completed: true
     }
     ];

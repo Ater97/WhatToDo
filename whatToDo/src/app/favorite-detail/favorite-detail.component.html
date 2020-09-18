@@ -7,7 +7,7 @@
     fxLayoutGap.xs="0">
 
   <div fxFlex="40">
-    <div fxFlex *ngIf="activity">
+    <div fxFlex *ngIf="activity" >
         <mat-card class="mat-card">
           <mat-card-header>
             <mat-card-title>
@@ -24,7 +24,7 @@
               <mat-icon>delete </mat-icon>
             </button>
 
-            <button mat-fab (click)="markAsDone(activity)" [ngClass]= bntStyle>
+            <button mat-fab (click)="markAsDone(activity)"  [ngClass]= "{'btn-default': activity.completed === false, 'turn-green': activity.completed === true }">
               <mat-icon>done_all </mat-icon>
             </button>
 
