@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 /* Add Amplify imports */
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
-import { AlertComponent } from './alert/alert.component';
+
 //import awsconfig from './aws-exports.js';
 
 @NgModule({
@@ -33,7 +33,6 @@ import { AlertComponent } from './alert/alert.component';
     RecomendationDetailComponent,
     FavoritesComponent,
     FavoriteDetailComponent,
-    AlertComponent
   ],
   imports: [
     BrowserModule,
