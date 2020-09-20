@@ -5,21 +5,12 @@
      <span><a  mat-button routerLink="/question" routerLinkActive="active" class="font">Ask what to do</a>
       <a  mat-button  routerLink="/favorites" routerLinkActive="active" class="font">My favorites</a></span>
      <span class="spacer"></span>
-     <a  mat-button  routerLink="/register" routerLinkActive="active" class="font">Register</a>
      <a  mat-button  routerLink="/login" routerLinkActive="active" class="font">Login</a>
-     
-     <template>
-      <amplify-authenticator>
-        <div>
-          My App
-          <amplify-sign-out></amplify-sign-out>
-        </div>
-      </amplify-authenticator>
-    </template>
+     <a  mat-button (click)="logout()">Logout</a>
 
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="main">
+  <alert></alert>
   <router-outlet></router-outlet>
-  
 </div>

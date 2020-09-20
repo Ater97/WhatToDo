@@ -20,7 +20,7 @@ export class FavoriteDetailComponent implements OnInit {
 
 
   public removeFromFavorites = (activityValue) => {
-    alert(activityValue.id);
+    //alert(activityValue.id);
   }
 
   public markAsDone =(activityValue) => {
@@ -28,7 +28,7 @@ export class FavoriteDetailComponent implements OnInit {
       activityValue.completed = false;
     else
       activityValue.completed = true;
-    alert(activityValue.id + "  " +activityValue.completed);
+    //alert(activityValue.id + "  " +activityValue.completed);
   }
 
 }

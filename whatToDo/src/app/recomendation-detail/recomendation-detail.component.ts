@@ -16,6 +16,6 @@ export class RecomendationDetailComponent implements OnInit {
   }
 
   public addToFavorites = (activityValue)=> {
-    alert(activityValue.id);
+    //alert(activityValue.id);
   }
 }

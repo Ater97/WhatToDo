@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
+import { User } from '../shared/user';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -10,23 +13,35 @@ export class RegistrationComponent implements OnInit {
   signstatus: string;
   toVerifyEmail: boolean;
 
-  constructor() { }
+  public registrationForm: FormGroup;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.registrationForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, ])
+    })
+  }
+  public hasError = (controlRegister: string, errorRegister: string) =>{
+    return this.registrationForm.controls[controlRegister].hasError(errorRegister);
   }
 
-  register(): void {
-
+  public register = (FormValue)=> {
+    if (this.registrationForm.valid) {
+      //createUser
+      this.router.navigate(["login"]);
+    }
   }
-
-  createUser(user): void {
+  
+  private createUser(user): void {
     Auth.signUp(user)
-      .then(data => {
-        console.log(data);
-        this.toVerifyEmail = true;
-        this.signstatus = '';
-      })
-      .catch(err => console.log(err));
+    .then(data => {
+      console.log(data);
+      this.toVerifyEmail = true;
+      this.signstatus = '';
+    })
+    .catch(err => console.log(err));
   }
 
   /**
@@ -41,14 +56,15 @@ export class RegistrationComponent implements OnInit {
     }
    */
 
-  verifyEmail(userName, verifycode): void {
-    Auth.confirmSignUp(userName, verifycode,
-      { forceAliasCreation: true }).then(data => {
-        console.log(data)
-        this.toVerifyEmail = false;
-        this.signstatus = 'signin'
-      })
-      .catch(err => console.log(err));
-  }
+   verifyEmail(userName, verifycode):void{
+    Auth.confirmSignUp(userName, verifycode, 
+      {forceAliasCreation: true}).then(data => {
+            console.log(data)
+            this.toVerifyEmail = false;
+            this.signstatus = 'signin'
+         })
+           .catch(err => console.log(err));
+   }
+
 
 }
