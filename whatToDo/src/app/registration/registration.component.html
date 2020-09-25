@@ -13,15 +13,16 @@
                
                   <mat-form-field class="full-width">
                      <mat-label>Name</mat-label>
-                     <input matInput placeholder="Name" name="name"  formControlName="name" required>
-                     <mat-error *ngIf="hasError('name', 'required')">Your name is required</mat-error>
+                     <input matInput placeholder="Name" name="username"  formControlName="username" required>
+                     <mat-error *ngIf="hasError('username', 'required')">Your username is required</mat-error>
                   </mat-form-field>
 
-                  <!-- <mat-form-field class="full-width">
+                  <mat-form-field class="full-width">
                      <mat-label>Email</mat-label>
-                     <input matInput placeholder="Email" name="email">
+                     <input matInput placeholder="Email" name="email"  formControlName="email"required>
+                     <mat-error *ngIf="hasError('email', 'required')">Your email is required</mat-error>
                   </mat-form-field>
-                  -->
+                  
 
                   <mat-form-field class="full-width">
                      <mat-label>Password</mat-label>

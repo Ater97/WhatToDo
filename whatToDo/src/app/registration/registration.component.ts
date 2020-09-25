@@ -19,8 +19,9 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, ])
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     })
   }
   public hasError = (controlRegister: string, errorRegister: string) =>{
@@ -29,6 +30,9 @@ export class RegistrationComponent implements OnInit {
 
   public register = (FormValue)=> {
     if (this.registrationForm.valid) {
+      console.log(FormValue.username);
+      console.log(FormValue.password)
+      console.log(FormValue.email)
       //createUser
       this.router.navigate(["login"]);
     }
