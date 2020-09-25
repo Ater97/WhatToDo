@@ -44,17 +44,6 @@ export class RegistrationComponent implements OnInit {
     .catch(err => console.log(err));
   }
 
-  /**
-    const user = {
-   username,
-   password,
-   attributes: {
-        email,
-        phone_number
-        // other custom attributes
-      }
-    }
-   */
 
    verifyEmail(userName, verifycode):void{
     Auth.confirmSignUp(userName, verifycode, 
@@ -66,5 +55,17 @@ export class RegistrationComponent implements OnInit {
            .catch(err => console.log(err));
    }
 
+   
+  /**
+    const user = {
+   username,
+   password,
+   attributes: {
+        email,
+        phone_number
+        // other custom attributes
+      }
+    }
+   */
 
 }

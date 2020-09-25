@@ -3,7 +3,7 @@
   }
 
 .active {
-  background:  #F29F05;
+  font-weight: bold;
 }
 
 .Main {
@@ -18,5 +18,6 @@
 
 .font{
 font-size:  100%;
-font-weight: bold;
+
+color: white;
 }

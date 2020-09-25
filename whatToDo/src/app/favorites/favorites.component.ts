@@ -21,4 +21,12 @@ export class FavoritesComponent implements OnInit {
   onSelect(activity: FavoriteActivity) {
     this.selectedActivity = activity;
   }
+
+  public markAsDone =(activityValue) => {
+    if(activityValue.completed)
+      activityValue.completed = false;
+    else
+      activityValue.completed = true;
+    //alert(activityValue.id + "  " +activityValue.completed);
+  }
 }

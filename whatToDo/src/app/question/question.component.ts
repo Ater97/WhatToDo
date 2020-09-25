@@ -35,7 +35,7 @@ export class QuestionComponent implements OnInit {
   }
 
   private executeQuestionCreation = (questionFormValue) => {
-    let question: QuestionForCreation = {
+    const question: QuestionForCreation = {
       participants: questionFormValue.participants,
       budget: questionFormValue.budget,
       time: questionFormValue.time,

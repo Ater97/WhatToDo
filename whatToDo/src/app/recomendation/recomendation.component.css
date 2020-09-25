@@ -3,3 +3,10 @@
     font-weight: bold;
     background-color: #3DBFF2;
 }
+
+.mat-carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

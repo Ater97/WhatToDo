@@ -16,6 +16,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ActivityService } from './services/activity.service';
 import { FavoriteDetailComponent } from './favorite-detail/favorite-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 /* Add Amplify imports */
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
@@ -40,6 +41,7 @@ import Amplify from 'aws-amplify';
     BrowserAnimationsModule,
     MyMaterialModule,
     ReactiveFormsModule,
+    MatCarouselModule.forRoot(),
     AmplifyUIAngularModule,
     
     RouterModule.forRoot([
