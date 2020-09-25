@@ -21,3 +21,18 @@ font-size:  100%;
 
 color: white;
 }
+
+.amply{
+  text-align: center;
+  --amplify-primary-font-weight: bold;
+}
+.sign-out{
+  --amplify-primary-color: transparent;
+}
+.root{
+
+  --amplify-primary-color: #008000;
+  --amplify-primary-tint: #0000FF; 
+  --amplify-primary-shade: #008000;
+
+  }

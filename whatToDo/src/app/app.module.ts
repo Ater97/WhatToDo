@@ -48,6 +48,7 @@ import Amplify from 'aws-amplify';
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'recomendation', component: RecomendationComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'recomendation', component: RecomendationComponent },
       { path: 'question', component: QuestionComponent },

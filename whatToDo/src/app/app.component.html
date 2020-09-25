@@ -1,16 +1,18 @@
+<amplify-authenticator class="amply" >
 
-<mat-toolbar >
-  <mat-toolbar-row>
-    <!--  <span>HOME</span> -->
-     <span><a  mat-button routerLink="/question" routerLinkActive="active" class="font">Ask what to do</a>
-      <a  mat-button  routerLink="/favorites" routerLinkActive="active" class="font">My favorites</a></span>
-     <span class="spacer"></span>
-     <a  mat-button  routerLink="/login" routerLinkActive="active" class="font">Login</a>
-     <a  mat-button (click)="logout()" class="font">Logout</a>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <!--  <span>HOME</span> -->
+      <span><a mat-button routerLink="/question" routerLinkActive="active" class="font">Ask what to do</a>
+        <a mat-button routerLink="/favorites" routerLinkActive="active" class="font">My favorites</a></span>
+      <span class="spacer"></span>
+      <!-- <a mat-button routerLink="/login" routerLinkActive="active" class="font">Login</a>
+      <a mat-button (click)="logout()" class="font">Logout</a>-->
+      <amplify-sign-out class="sign-out"></amplify-sign-out>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="main">
+    <router-outlet></router-outlet>
 
-  </mat-toolbar-row>
-</mat-toolbar>
-<div class="main">
-  <router-outlet></router-outlet>
-  
-</div>
+  </div>
+</amplify-authenticator>
