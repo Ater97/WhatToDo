@@ -8,3 +8,17 @@ export class Activity {
         public description: string
     ) { }
 }
+
+export interface IActivity {
+     _id: string;
+     name: string;
+     image: string;
+     cover: string; 
+     description: string
+}
+
+    /* _id: string;
+     name: string;
+     image: string;
+     cover: string; //1920x480
+     description: string*/

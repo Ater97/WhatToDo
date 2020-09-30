@@ -12,14 +12,22 @@ import { $$iterator } from 'rxjs/internal/symbol/iterator';
 })
 export class RecomendationComponent implements OnInit {
 
-  activities: Activity[];
+  activities=[];
   selectedActivity: Activity;
 
   constructor(private activityService: ActivityService) { }
 
   ngOnInit() {
-    this.activities = this.activityService.getActivities();
-
+    //this.activities = this.activityService.getActivities();
+    this.activityService.getActivities()
+    .subscribe( 
+      res => {
+        console.log(res.activities)
+        this.activities=res.activities
+      },
+      err => console.log(err)
+    );
+    console.log(this.activities)
   }
 
   onSelect(activity: Activity) {
