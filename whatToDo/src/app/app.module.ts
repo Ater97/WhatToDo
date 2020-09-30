@@ -22,6 +22,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify from 'aws-amplify';
 
+
+import { HttpClientModule } from '@angular/common/http';
 //import awsconfig from './aws-exports.js';
 
 @NgModule({
@@ -43,6 +45,7 @@ import Amplify from 'aws-amplify';
     ReactiveFormsModule,
     MatCarouselModule.forRoot(),
     AmplifyUIAngularModule,
+    HttpClientModule,
     
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },

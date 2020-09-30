@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from '../shared/activity';
 import { ActivityService } from '../services/activity.service';
+import { Observable } from "rxjs";
+import { stringify } from 'querystring';
+import { $$iterator } from 'rxjs/internal/symbol/iterator';
 
 @Component({
   selector: 'app-recomendation',
@@ -13,9 +16,10 @@ export class RecomendationComponent implements OnInit {
   selectedActivity: Activity;
 
   constructor(private activityService: ActivityService) { }
-  
+
   ngOnInit() {
     this.activities = this.activityService.getActivities();
+
   }
 
   onSelect(activity: Activity) {

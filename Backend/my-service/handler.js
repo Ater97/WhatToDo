@@ -2,13 +2,23 @@
 const dbjs = require('./db.js');
 module.exports.getActivities = async event => {
   const db = await dbjs.get();
-  
+
   const activities = await db.collection('activities').find().toArray();
-  return { statusCode: 200, body: JSON.stringify({ activities: activities })   };
+  return {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Headers": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      //"Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+    },
+    body: JSON.stringify({
+      activities: activities
+    })
+  };
 };
 
 /**
- * 
+ *
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:vpuLbU9XzBoLSQRN@cluster0.o88g9.mongodb.net/what_to_do?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
