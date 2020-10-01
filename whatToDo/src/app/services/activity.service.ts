@@ -10,6 +10,8 @@ import { Http, Response } from "@angular/http"
 import 'rxjs/add/operator/map';
 import "rxjs/Rx";
 import { map } from "rxjs/operators";
+import { stringify } from 'querystring';
+import { $$iterator } from 'rxjs/internal/symbol/iterator';
 
 @Injectable({
   providedIn: 'root'
