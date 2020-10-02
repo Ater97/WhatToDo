@@ -68,8 +68,16 @@ functions:
     handler: favorites.getFavorites
     events:
       - http: 
-          path: favorites
+          path: favorites/{id}
           method: get
+          cors: true
+  createFavorite:
+    handler: favorites.createFavorite
+    events:
+      - http:
+          path: favorite
+          method: post
+          cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
