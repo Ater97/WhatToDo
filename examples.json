@@ -1,0 +1,36 @@
+{
+  "body": "{\"user\":\"user3\",\"activities\":[{\"activity\":\"user3\",\"completed\":\"true\"}]}"
+}
+
+5f7d08f89f8f4d00083cbc31
+
+
+{
+  "body": "{\"user\":\"user3\",
+  \"activities\":[
+      {\"activity\":\"Camping\",
+      \"image\":\"/assets/images/camping.jpg\",
+      \"cover\":\"/assets/covers/camping.jpg\",
+      \"description\":\"Recreational activity in which participants take up temporary residence in the outdoors, usually using tents or specially designed or adapted vehicles\",
+      \"completed\":\"true\"
+      }]}"
+}
+
+{
+    "body": "{\"user\":\"sebas\",
+    \"activities\":[
+        {\"activity\":\"Camping\",
+        \"image\":\"/assets/images/camping.jpg\",
+        \"cover\":\"/assets/covers/camping.jpg\",
+        \"description\":\"Recreational activity in which participants take up temporary residence in the outdoors, usually using tents or specially designed or adapted vehicles\",
+        \"completed\":\"true\"
+        },
+        {\"activity\":\"Eat\",
+            \"image\":\"/assets/images/eat.jpg\",
+            \"cover\":\"/assets/covers/eat.jpg\",
+            \"description\":\"There's no need of desc\",
+            \"completed\":\"true\"
+            }
+        
+        ]}"
+  }

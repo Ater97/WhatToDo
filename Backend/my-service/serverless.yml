@@ -78,6 +78,13 @@ functions:
           path: favorite
           method: post
           cors: true
+  updateFavorite:
+    handler: favorites.updateFavorite
+    events:
+      - http:
+          path: favorites/{id}
+          method: put
+          cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

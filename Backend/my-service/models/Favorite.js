@@ -11,6 +11,14 @@ const validator = require('validator');
             activity:"Eat"
             completed:false
  */
+const ActivitieSchema = new mongoose.Schema({
+    activity: String,
+    image: String,
+    cover: String,
+    description: String,
+    completed: Boolean,
+  });
+
 const model = mongoose.model('Favorite', {
     user: {
         type: String,
@@ -22,8 +30,8 @@ const model = mongoose.model('Favorite', {
         },
     },
     activities: {
-        type: Array,
-        /*required: true,
+        type: [ActivitieSchema],
+        required: true,
         /* validate: {
              validator(activities) {
                  return validator.isAlphanumeric(activities);

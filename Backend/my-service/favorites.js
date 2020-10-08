@@ -27,7 +27,7 @@ module.exports.getFavorites = (event, context, callback) => {
 
     dbConnectAndExecute(mongoString, () => (
         FavoriteModel
-            .find({ _id: event.pathParameters.id })
+            .find({ user: event.pathParameters.id })
             .then(favorite => callback(null, { statusCode: 200, body: JSON.stringify(favorite) }))
             .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
     ));
@@ -54,5 +54,31 @@ module.exports.createFavorite = (event, context, callback) => {
           body: JSON.stringify({ id: favorite.id }),
         }))
         .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
+    ));
+  };
+
+  module.exports.updateFavorite = (event, context, callback) => {
+    const data = JSON.parse(event.body);
+    const id = event.pathParameters.id;
+  
+    if (!validator.isAlphanumeric(id)) {
+      callback(null, createErrorResponse(400, 'Incorrect id'));
+      return;
+    }
+  
+    const favorite = new FavoriteModel({
+      user: data.user,
+      activities: data.activities
+    });
+  
+    if (favorite.validateSync()) {
+      callback(null, createErrorResponse(400, 'Incorrect parameter'));
+      return;
+    }
+  
+    dbConnectAndExecute(mongoString, () => (
+      FavoriteModel.findByIdAndUpdate(id, favorite)
+        .then(() => callback(null, { statusCode: 200, body: JSON.stringify('Ok') }))
+        .catch(err => callback(err, createErrorResponse(err.statusCode, err.message)))
     ));
   };
