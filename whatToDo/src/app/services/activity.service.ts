@@ -17,7 +17,7 @@ import { $$iterator } from 'rxjs/internal/symbol/iterator';
   providedIn: 'root'
 })
 export class ActivityService {
-  private ChuckUrl = "https://uwj4hwj86j.execute-api.us-east-1.amazonaws.com/dev/hello";
+  private ChuckUrl = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/activities";
 
   constructor(private http: HttpClient) { }
 

@@ -28,7 +28,15 @@ module.exports.getFavorites = (event, context, callback) => {
     dbConnectAndExecute(mongoString, () => (
         FavoriteModel
             .find({ user: event.pathParameters.id })
-            .then(favorite => callback(null, { statusCode: 200, body: JSON.stringify(favorite) }))
+            .then(favorite => callback(null, { 
+              statusCode: 200, 
+              body: JSON.stringify(favorite), 
+              headers: {
+                "Access-Control-Allow-Headers": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                //"Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+              },
+            }))
             .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
     ));
 };
@@ -52,6 +60,11 @@ module.exports.createFavorite = (event, context, callback) => {
         .then(() => callback(null, {
           statusCode: 200,
           body: JSON.stringify({ id: favorite.id }),
+              headers: {
+                "Access-Control-Allow-Headers": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                //"Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+              },
         }))
         .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
     ));
@@ -78,7 +91,15 @@ module.exports.createFavorite = (event, context, callback) => {
   
     dbConnectAndExecute(mongoString, () => (
       FavoriteModel.findByIdAndUpdate(id, favorite)
-        .then(() => callback(null, { statusCode: 200, body: JSON.stringify('Ok') }))
+        .then(() => callback(null, { 
+          statusCode: 200, 
+          body: JSON.stringify('Ok'), 
+          headers: {
+            "Access-Control-Allow-Headers": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            //"Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+          }, 
+        }))
         .catch(err => callback(err, createErrorResponse(err.statusCode, err.message)))
     ));
   };
