@@ -2,7 +2,7 @@ export class Activity {
 
     constructor(
         public _id: string,
-        public name: string,
+        public activity: string,
         public image: string,
         public cover: string, //1920x480
         public description: string
@@ -11,7 +11,7 @@ export class Activity {
 
 export interface IActivity {
      _id: string;
-     name: string;
+     activity: string;
      image: string;
      cover: string; 
      description: string

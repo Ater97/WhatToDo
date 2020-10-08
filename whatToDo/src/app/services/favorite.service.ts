@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FavoriteActivity } from '../shared/favoriteActivity';
 import { FAVORITES } from '../shared/favorites';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClient } from '@angular/common/http';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
@@ -18,13 +19,23 @@ import { $$iterator } from 'rxjs/internal/symbol/iterator';
   providedIn: 'root'
 })
 export class FavoriteService {
-  private ChuckUrl = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorites/";
-
+  private ChuckUrlGet = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorites/";
+  private ChuckUrlPost = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorite";
   constructor(private http: HttpClient) { }
 
   getFavorites(id:any): Observable<any>{
-    console.log(this.ChuckUrl + id);
-    return this.http.get(this.ChuckUrl + id).pipe(retry(3));
+    console.log(this.ChuckUrlGet + id);
+    return this.http.get(this.ChuckUrlGet + id).pipe(retry(3));
+  }
+
+  createFavorites(body: any){
+    console.log(body)
+   // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+    //const body = { title: 'Angular POST Request Example' };
+    this.http.post(this.ChuckUrlPost, body, )//{ headers }
+    .subscribe(data => {
+      console.log(data)
+  });
   }
 
   /*getFavorites(): FavoriteActivity[] {
