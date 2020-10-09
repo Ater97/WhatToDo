@@ -14,6 +14,7 @@ export class RecomendationDetailComponent implements OnInit {
   @Input()
   activity: Activity;
   favorites = [];
+  currentUser = String;
   constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class RecomendationDetailComponent implements OnInit {
       bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
       console.log(user.username),
+        this.currentUser = user.username,
         this.favoriteService.getFavorites(user.username)
           .subscribe(
             res => {
@@ -34,20 +36,8 @@ export class RecomendationDetailComponent implements OnInit {
   }
 
   public addToFavorites = (activityValue) => {
-    //console.log(activityValue);
-    if (this.favorites.length > 0) { //create new favorites
-
-      let body = {
-          user:'as',
-          activities:[{
-            activity: activityValue.activity,
-            image: activityValue.image,
-            cover: activityValue.cover,
-            description: activityValue.description,
-            completed: false
-          }]
-      }
-      this.favoriteService.createFavorites(body);
+    if (this.favorites.length < 1) { //create new favorites
+      this.favoriteService.createFavorites(activityValue, this.currentUser);
     }
     else {
 

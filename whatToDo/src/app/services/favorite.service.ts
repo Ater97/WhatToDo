@@ -23,19 +23,28 @@ export class FavoriteService {
   private ChuckUrlPost = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorite";
   constructor(private http: HttpClient) { }
 
-  getFavorites(id:any): Observable<any>{
+  getFavorites(id: any): Observable<any> {
     console.log(this.ChuckUrlGet + id);
     return this.http.get(this.ChuckUrlGet + id).pipe(retry(3));
   }
 
-  createFavorites(body: any){
-    console.log(body)
-   // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  createFavorites(activityValue: any, user) {
+    let body = {
+      user: user,
+      activities: [{
+        activity: activityValue.activity,
+        image: activityValue.image,
+        cover: activityValue.cover,
+        description: activityValue.description,
+        completed: false
+      }]
+    }
+    // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
     //const body = { title: 'Angular POST Request Example' };
-    this.http.post(this.ChuckUrlPost, body, )//{ headers }
-    .subscribe(data => {
-      console.log(data)
-  });
+    this.http.post(this.ChuckUrlPost, body,)//{ headers }
+      .subscribe(data => {
+        console.log(data)
+      });
   }
 
   /*getFavorites(): FavoriteActivity[] {
