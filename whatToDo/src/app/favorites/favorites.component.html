@@ -1,6 +1,16 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
   <mat-toolbar>
-    
+    <div *ngIf="!showEmpty" class = "deleteAll">
+      <mat-card-actions>
+        <button mat-flat-button color="warn" (click)="deleteAll()">
+          <span class="material-icons">
+            delete_forever
+            </span>
+            Delete All
+          </button>
+      </mat-card-actions>
+    </div>
+
   </mat-toolbar>
   <div *ngIf="showEmpty">
     <img  class="images" src='/assets/empty.jpg'/>

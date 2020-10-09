@@ -15,6 +15,7 @@ export class FavoritesComponent implements OnInit {
   constructor(private favoriteService: FavoriteService) { }
   showEmpty: boolean = false
   currentUser = String;
+  currentId = String;
 
   async ngOnInit() {
     Auth.currentAuthenticatedUser({
@@ -26,6 +27,7 @@ export class FavoritesComponent implements OnInit {
           .subscribe(
             res => {
               //console.log(res[0].activities)
+              this.currentId = res[0]._id,
               this.favorites = res[0].activities,
                 this.showEmpty = false
             },
@@ -47,6 +49,10 @@ export class FavoritesComponent implements OnInit {
     this.selectedActivity = activity;
   }
 
+  deleteAll(){
+    
+  }
+
   public markAsDone = (activityValue) => {
     console.log("MarkAsDone general")
     if (activityValue.completed)
@@ -57,12 +63,14 @@ export class FavoritesComponent implements OnInit {
     console.log(this.favorites)
     this.showUpdatedItem(activityValue);
     console.log(this.favorites)
-    this.favoriteService.updateFavorites(this.favorites, this.currentUser);
+    this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId );
   }
 
   private showUpdatedItem(newItem) {
-    let updateItem = this.favorites.find(this.findIndexToUpdate, newItem.id);
+    let updateItem = this.favorites.find(this.findIndexToUpdate, newItem.activity);
+    console.log(updateItem)
     let index = this.favorites.indexOf(updateItem);
+    console.log(index)
     this.favorites[index] = newItem;
   }
 

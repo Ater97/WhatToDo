@@ -72,15 +72,16 @@ module.exports.createFavorite = (event, context, callback) => {
 
 module.exports.updateFavorite = (event, context, callback) => {
   const data = JSON.parse(event.body);
-  const user = event.pathParameters.id;
+  const id = event.pathParameters.id;
 
-  if (!validator.isAlphanumeric(user)) {
+  if (!validator.isAlphanumeric(id)) {
     callback(null, createErrorResponse(400, 'Incorrect id'));
     return;
   }
 
   const favorite = new FavoriteModel({
-    user: user,
+    _id: id,
+    user: data.user,
     activities: data.activities
   });
 
@@ -90,7 +91,7 @@ module.exports.updateFavorite = (event, context, callback) => {
   }
 
   dbConnectAndExecute(mongoString, () => (
-    FavoriteModel.findByIdAndUpdate(user, favorite)
+    FavoriteModel.findByIdAndUpdate(id, favorite)
       .then(() => callback(null, {
         statusCode: 200,
         body: JSON.stringify('Ok'),

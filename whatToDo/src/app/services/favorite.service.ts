@@ -47,12 +47,12 @@ export class FavoriteService {
         console.log(data)
       });
   }
-  updateFavorites(activitiesValue: any, user) {
+  updateFavorites(activitiesValue: any, user, id) {
     let body = {
       user: user,
       activities: activitiesValue
     }
-    this.http.put(this.ChuckUrlPut + user, body)//{ headers }
+    this.http.put(this.ChuckUrlPut + id, body)//{ headers }
       .subscribe(data => {
         console.log(data)
       });
