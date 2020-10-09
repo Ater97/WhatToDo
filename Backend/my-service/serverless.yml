@@ -75,7 +75,7 @@ functions:
     handler: favorites.createFavorite
     events:
       - http:
-          path: favorite
+          path: favorites
           method: post
           cors: true
   updateFavorite:

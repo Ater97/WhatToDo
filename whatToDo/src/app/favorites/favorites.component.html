@@ -15,7 +15,7 @@
   <div *ngIf="showEmpty">
     <img  class="images" src='/assets/empty.jpg'/>
   </div>
-  <div fxFlex>
+  <div fxFlex *ngIf="!showEmpty">
     <!--<mat-grid-list cols="{{favorites.length}}" rowHeight="200px">
       <mat-grid-tile *ngFor="let activity of favorites" (click)=onSelect(activity)>
         <img height="200px" src={{activity.image}} alt={{activity.name}}>

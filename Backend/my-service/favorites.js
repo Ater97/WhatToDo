@@ -63,7 +63,6 @@ module.exports.createFavorite = (event, context, callback) => {
         headers: {
           "Access-Control-Allow-Headers": "application/json",
           "Access-Control-Allow-Origin": "*",
-          //"Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         },
       }))
       .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
@@ -98,9 +97,28 @@ module.exports.updateFavorite = (event, context, callback) => {
         headers: {
           "Access-Control-Allow-Headers": "application/json",
           "Access-Control-Allow-Origin": "*",
-          //"Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         },
       }))
       .catch(err => callback(err, createErrorResponse(err.statusCode, err.message)))
+  ));
+};
+
+module.exports.deleteFavorite = (event, context, callback) => {
+  if (!validator.isAlphanumeric(event.pathParameters.id)) {
+    callback(null, createErrorResponse(400, 'Incorrect id'));
+    return;
+  }
+
+  dbConnectAndExecute(mongoString, () => (
+    FavoriteModel.remove({ _id: event.pathParameters.id })
+      .then(() => callback(null, {
+        statusCode: 200,
+        body: JSON.stringify('Ok'),
+        headers: {
+          "Access-Control-Allow-Headers": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        }
+      }))
+      .catch(err => callback(null, createErrorResponse(err.statusCode, err.message)))
   ));
 };

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FavoriteActivity } from '../shared/favoriteActivity';
 import { FavoriteService } from '../services/favorite.service';
 import { Auth } from 'aws-amplify';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorite-detail',
@@ -9,7 +10,7 @@ import { Auth } from 'aws-amplify';
   styleUrls: ['./favorite-detail.component.css']
 })
 export class FavoriteDetailComponent implements OnInit {
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private favoriteService: FavoriteService, private router: Router) { }
   favorites = [];
 
   @Input()
@@ -21,14 +22,11 @@ export class FavoriteDetailComponent implements OnInit {
     Auth.currentAuthenticatedUser({
       bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
-      //console.log(user.username),
-        this.currentUser = user.username,
+      this.currentUser = user.username,
         this.favoriteService.getFavorites(user.username)
           .subscribe(
             res => {
-              console.log(res[0]._id),
-                this.currentId = res[0]._id,
-                console.log(res[0].activities),
+              this.currentId = res[0]._id,
                 this.favorites = res[0].activities
             },
             err => console.log(err)
@@ -39,7 +37,19 @@ export class FavoriteDetailComponent implements OnInit {
 
 
   public removeFromFavorites = (activityValue) => {
-    //alert(activityValue.id);
+    //this.activity = null
+    this.router.navigate(['favorites']);
+    /*this.router.navigateByUrl('/favorites', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['favorites']);
+    });*/
+    let updateItem = this.favorites.find(this.findIndexToUpdate, activityValue.activity);
+    let index = this.favorites.indexOf(updateItem);
+    this.favorites.splice(index, 1);
+    console.log(this.favorites)
+    if (this.favorites.length < 1)
+      this.favoriteService.deleteFavorites(this.currentId);
+    if (this.favorites.length > 0)
+      this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId);
   }
 
   public markAsDone = (activityValue) => {
@@ -49,10 +59,8 @@ export class FavoriteDetailComponent implements OnInit {
     else
       activityValue.completed = true;
 
-    console.log(this.favorites)
     this.showUpdatedItem(activityValue);
-    console.log(this.favorites)
-    this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId );
+    this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId);
   }
 
   private showUpdatedItem(newItem) {

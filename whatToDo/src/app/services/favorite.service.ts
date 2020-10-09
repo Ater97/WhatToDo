@@ -19,14 +19,13 @@ import { $$iterator } from 'rxjs/internal/symbol/iterator';
   providedIn: 'root'
 })
 export class FavoriteService {
-  private ChuckUrlGet = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorites/";
-  private ChuckUrlPost = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorite";
-  private ChuckUrlPut = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorites/";
+  private ChuckUrl = "https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com/dev/favorites";
+
   constructor(private http: HttpClient) { }
 
   getFavorites(id: any): Observable<any> {
     //console.log(this.ChuckUrlGet + id);
-    return this.http.get(this.ChuckUrlGet + id).pipe(retry(3));
+    return this.http.get(this.ChuckUrl + '/' + id).pipe(retry(3));
   }
 
   createFavorites(activityValue: any, user) {
@@ -42,7 +41,7 @@ export class FavoriteService {
     }
     // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
     //const body = { title: 'Angular POST Request Example' };
-    this.http.post(this.ChuckUrlPost, body,)//{ headers }
+    this.http.post(this.ChuckUrl, body,)//{ headers }
       .subscribe(data => {
         console.log(data)
       });
@@ -52,12 +51,18 @@ export class FavoriteService {
       user: user,
       activities: activitiesValue
     }
-    this.http.put(this.ChuckUrlPut + id, body)//{ headers }
+    this.http.put(this.ChuckUrl + '/' + id, body)//{ headers }
       .subscribe(data => {
         console.log(data)
       });
   }
 
+  deleteFavorites(id){
+    this.http.delete(this.ChuckUrl + '/' + id)//{ headers }
+      .subscribe(data => {
+        console.log(data)
+      });
+  }
   /*getFavorites(): FavoriteActivity[] {
     return FAVORITES;
   }*/

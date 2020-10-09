@@ -50,7 +50,9 @@ export class FavoritesComponent implements OnInit {
   }
 
   deleteAll(){
-    
+    this.favoriteService.deleteFavorites(this.currentId);
+    this.showEmpty = true
+    this.selectedActivity= null
   }
 
   public markAsDone = (activityValue) => {
