@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FavoriteActivity } from '../shared/favoriteActivity';
 import { FavoriteService } from '../services/favorite.service';
 import { Auth } from 'aws-amplify';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-favorite-detail',
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./favorite-detail.component.css']
 })
 export class FavoriteDetailComponent implements OnInit {
-  constructor(private favoriteService: FavoriteService, private router: Router) { }
+  constructor(private favoriteService: FavoriteService) {
+  }
   favorites = [];
-
-  @Input()
-  activity: FavoriteActivity;
+  @Input() activity: (args: any) => void;
+  //activity: FavoriteActivity;
   currentUser = String;
   currentId = String;
 
@@ -37,11 +37,6 @@ export class FavoriteDetailComponent implements OnInit {
 
 
   public removeFromFavorites = (activityValue) => {
-    //this.activity = null
-    this.router.navigate(['favorites']);
-    /*this.router.navigateByUrl('/favorites', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['favorites']);
-    });*/
     let updateItem = this.favorites.find(this.findIndexToUpdate, activityValue.activity);
     let index = this.favorites.indexOf(updateItem);
     this.favorites.splice(index, 1);
@@ -50,6 +45,7 @@ export class FavoriteDetailComponent implements OnInit {
       this.favoriteService.deleteFavorites(this.currentId);
     if (this.favorites.length > 0)
       this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId);
+      this.activity = null;
   }
 
   public markAsDone = (activityValue) => {

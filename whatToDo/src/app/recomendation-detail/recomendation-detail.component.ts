@@ -15,6 +15,7 @@ export class RecomendationDetailComponent implements OnInit {
   activity: Activity;
   favorites = [];
   currentUser = String;
+  currentId = String;
   constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit() {
@@ -26,8 +27,9 @@ export class RecomendationDetailComponent implements OnInit {
         this.favoriteService.getFavorites(user.username)
           .subscribe(
             res => {
-              console.log(res[0].activities)
-              this.favorites = res[0].activities
+              //console.log(res[0].activities),
+              this.currentId = res[0]._id,
+                this.favorites = res[0].activities
             },
             err => console.log(err)
           );
@@ -42,11 +44,18 @@ export class RecomendationDetailComponent implements OnInit {
     else {
 
       let item1 = this.favorites.find(i => i.activity === activityValue.activity);
-      console.log(item1);
+      //console.log(item1);
       if (typeof item1 === 'undefined') { //if doesnt exits add it
-
-
-        console.log(activityValue.activity + ' is undefined');
+        let newFavorite = {
+          activity: activityValue.activity,
+          image: activityValue.image,
+          cover: activityValue.cover,
+          description: activityValue.description,
+          completed: false
+        }
+        this.favorites.push(newFavorite)
+        this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId);
+        //console.log(activityValue.activity + ' is undefined');
       }
     }
   }

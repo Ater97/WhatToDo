@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FavoriteActivity } from '../shared/favoriteActivity';
 import { FavoriteService } from '../services/favorite.service';
 import { Auth } from 'aws-amplify';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorites',
@@ -12,7 +13,7 @@ export class FavoritesComponent implements OnInit {
 
   favorites = [];
   selectedActivity: FavoriteActivity;
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private favoriteService: FavoriteService, private cdr:ChangeDetectorRef, private router: Router) { }
   showEmpty: boolean = false
   currentUser = String;
   currentId = String;
@@ -45,7 +46,14 @@ export class FavoritesComponent implements OnInit {
       this.showEmpty = true
   }
 
-  onSelect(activity: FavoriteActivity) {
+  myCallbackFunction = (args: any): void => {
+    //callback code here
+    this.router.navigate(['favorites']);
+    this.ngOnInit();
+  }
+
+  onSelect = (activity: FavoriteActivity): void => {
+    this.ngOnInit();
     this.selectedActivity = activity;
   }
 

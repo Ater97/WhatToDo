@@ -61,7 +61,7 @@ functions:
   activities:
     handler: handler.getActivities
     events:
-      - http: #GET hello
+      - http: 
           path: activities
           method: get
   favorites:
