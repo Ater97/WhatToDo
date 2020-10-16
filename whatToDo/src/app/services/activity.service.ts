@@ -25,11 +25,19 @@ export class ActivityService {
     return ACTIVITIES;
   }*/
 
-  getActivities(): Observable<any>{
+  getActivities(values:any): Observable<any>{
+    let body = {
+      participantsMax: values.participantsMax,
+      participantsMin: values.participantsMin,
+      budget: values.budget,
+      time: values.time,
+      intensity: values.intensity,
+    }
+    let allActivities = this.http.get(this.ChuckUrl).pipe(retry(3))
+      .subscribe(data => {
+        console.log(data)
+      });
     return this.http.get(this.ChuckUrl).pipe(retry(3));
   }
 
-  private handleError(error: Response) {
-    return Observable.throw(error.statusText);
-  }
 }

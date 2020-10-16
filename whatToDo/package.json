@@ -24,6 +24,7 @@
     "@angular/router": "~10.0.14",
     "@aws-amplify/ui-angular": "^0.4.5",
     "@ngmodule/material-carousel": "^0.6.0",
+    "@weareunite/unisys-angular-app-state-service": "^0.2.1",
     "aws-amplify": "^3.3.2",
     "aws-amplify-angular": "^5.0.31",
     "rxjs": "^6.6.3",

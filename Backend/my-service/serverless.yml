@@ -64,6 +64,7 @@ functions:
       - http: 
           path: activities
           method: get
+          cors: true
   favorites:
     handler: favorites.getFavorites
     events:

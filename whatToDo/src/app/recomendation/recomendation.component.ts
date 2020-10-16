@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Activity } from '../shared/activity';
 import { ActivityService } from '../services/activity.service';
+import { StateService, State } from '../services/state.service';
 
 @Component({
   selector: 'app-recomendation',
@@ -11,12 +12,12 @@ export class RecomendationComponent implements OnInit {
 
   activities = [];
   selectedActivity: Activity;
-
-  constructor(private activityService: ActivityService) { }
+  @Input() question: (args: any) => void;
+  constructor(private activityService: ActivityService, private stateService: StateService) { }
 
   ngOnInit() {
     //this.activities = this.activityService.getActivities();
-    this.activityService.getActivities()
+    this.activityService.getActivities(null)
       .subscribe(
         res => {
           console.log(res.activities)

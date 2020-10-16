@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionForCreation } from '../shared/questionForCreation';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { StateService, State } from '../services/state.service';
 
 @Component({
   selector: 'app-question',
@@ -12,7 +13,7 @@ export class QuestionComponent implements OnInit {
 
   public questionForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private stateService: StateService) { }
 
   ngOnInit() {
     this.questionForm = new FormGroup({
@@ -41,6 +42,8 @@ export class QuestionComponent implements OnInit {
       time: questionFormValue.time,
       intensity: questionFormValue.intensity
     }
+    console.log("question");
+    console.log(question);
   }
   
 }
