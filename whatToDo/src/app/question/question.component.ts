@@ -12,7 +12,7 @@ import { StateService, State } from '../services/state.service';
 export class QuestionComponent implements OnInit {
 
   public questionForm: FormGroup;
-
+  question: QuestionForCreation;
   constructor(private router: Router, private stateService: StateService) { }
 
   ngOnInit() {
@@ -24,26 +24,33 @@ export class QuestionComponent implements OnInit {
     });
   }
 
-  public hasError = (controlParticipants: string, errorParticipant: string) =>{
+  public hasError = (controlParticipants: string, errorParticipant: string) => {
     return this.questionForm.controls[controlParticipants].hasError(errorParticipant);
   }
-  
-  public askQuestion = (questionFormValue)=> {
+
+  public askQuestion = (questionFormValue) => {
     if (this.questionForm.valid) {
-      this.executeQuestionCreation(questionFormValue);
+      const question: QuestionForCreation = {
+        participants: questionFormValue.participants,
+        budget: questionFormValue.budget,
+        time: questionFormValue.time,
+        intensity: questionFormValue.intensity
+      }
+      
       this.router.navigate(["recomendation"]);
+
     }
   }
 
-  private executeQuestionCreation = (questionFormValue) => {
-    const question: QuestionForCreation = {
-      participants: questionFormValue.participants,
-      budget: questionFormValue.budget,
-      time: questionFormValue.time,
-      intensity: questionFormValue.intensity
-    }
-    console.log("question");
-    console.log(question);
-  }
-  
+  /* private executeQuestionCreation = (questionFormValue) => {
+     const question: QuestionForCreation = {
+       participants: questionFormValue.participants,
+       budget: questionFormValue.budget,
+       time: questionFormValue.time,
+       intensity: questionFormValue.intensity
+     }
+     console.log("question");
+     console.log(question);
+   }*/
+
 }
