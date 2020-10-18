@@ -10,8 +10,11 @@
       <br>
     </div>
   </div>
-
+ 
   <div fxFlex>
+    <div *ngIf="showLoading">
+      <mat-spinner></mat-spinner>
+    </div>
     <!--<mat-grid-list cols="{{activities.length}}" rowHeight="200px">
       <mat-grid-tile *ngFor="let activity of activities" (click) = onSelect(activity)>
         <img height="200px" src={{activity.image}} alt={{activity.name}}>

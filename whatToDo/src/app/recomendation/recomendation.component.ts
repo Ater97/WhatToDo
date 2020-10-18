@@ -12,6 +12,7 @@ export class RecomendationComponent implements OnInit {
 
   activities = [];
   selectedActivity: Activity;
+  showLoading: boolean = true
   @Input() question: (args: any) => void;
   constructor(private activityService: ActivityService, private stateService: StateService) { }
 
@@ -21,9 +22,13 @@ export class RecomendationComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res.activities)
-          this.activities = res.activities
+          this.activities = res.activities,
+          this.showLoading = false
         },
-        err => console.log(err)
+        err => {
+          this.showLoading = true,
+            console.log(err)
+        }
       );
   }
 
