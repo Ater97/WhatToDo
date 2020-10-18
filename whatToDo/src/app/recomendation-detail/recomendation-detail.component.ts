@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Activity } from '../shared/activity';
 import { FavoriteService } from '../services/favorite.service';
 import { Auth } from 'aws-amplify';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-recomendation-detail',
@@ -16,7 +17,7 @@ export class RecomendationDetailComponent implements OnInit {
   favorites = [];
   currentUser = String;
   currentId = String;
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private favoriteService: FavoriteService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     Auth.currentAuthenticatedUser({
@@ -53,10 +54,22 @@ export class RecomendationDetailComponent implements OnInit {
           description: activityValue.description,
           completed: false
         }
+        console.log('snackbar')
+        this.openSnackBar(activityValue.activity + ' added');
         this.favorites.push(newFavorite)
         this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId);
         //console.log(activityValue.activity + ' is undefined');
       }
+      if (typeof item1 != 'undefined'){
+        this.openSnackBar(activityValue.activity + ' is already on your list');
+      }
     }
+  }
+
+  openSnackBar(message: string) {
+    console.log("snackbar")
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 }

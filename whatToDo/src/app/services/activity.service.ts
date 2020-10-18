@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Activity, IActivity } from '../shared/activity';
-import { ACTIVITIES } from '../shared/activities';
+//import { ACTIVITIES } from '../shared/activities';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
@@ -26,7 +26,7 @@ export class ActivityService {
   }*/
 
   getActivities(values:any): Observable<any>{
-    let body = {
+    /*let body = {
       participantsMax: values.participantsMax,
       participantsMin: values.participantsMin,
       budget: values.budget,
@@ -36,7 +36,7 @@ export class ActivityService {
     let allActivities = this.http.get(this.ChuckUrl).pipe(retry(3))
       .subscribe(data => {
         console.log(data)
-      });
+      });*/
     return this.http.get(this.ChuckUrl).pipe(retry(3));
   }
 

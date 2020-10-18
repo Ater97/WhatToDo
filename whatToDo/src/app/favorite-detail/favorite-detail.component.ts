@@ -41,11 +41,13 @@ export class FavoriteDetailComponent implements OnInit {
     let index = this.favorites.indexOf(updateItem);
     this.favorites.splice(index, 1);
     console.log(this.favorites)
-    if (this.favorites.length < 1)
+    if (this.favorites.length < 1) {
       this.favoriteService.deleteFavorites(this.currentId);
-    if (this.favorites.length > 0)
+    }
+    if (this.favorites.length > 0) {
       this.favoriteService.updateFavorites(this.favorites, this.currentUser, this.currentId);
-      this.activity = null;
+    }
+    this.activity = null;
   }
 
   public markAsDone = (activityValue) => {

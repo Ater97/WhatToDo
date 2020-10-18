@@ -1,7 +1,7 @@
 import { Activity } from './activity';
-
+   /*
 export const ACTIVITIES: Activity[] = [
-    {
+ {
       _id: '0',
       activity: 'Sleep',
       image: '/assets/images/sleep.png',
@@ -37,3 +37,4 @@ export const ACTIVITIES: Activity[] = [
       description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
     }
     ];
+    **/

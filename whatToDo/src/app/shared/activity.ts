@@ -5,7 +5,12 @@ export class Activity {
         public activity: string,
         public image: string,
         public cover: string, //1920x480
-        public description: string
+        public description: string,
+        public participantsMax: number,
+        public participantsMin: number,
+        public budget: number,
+        public time: number,
+        public intensity: string
     ) { }
 }
 
