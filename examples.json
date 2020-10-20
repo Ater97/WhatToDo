@@ -2,8 +2,6 @@
   "body": "{\"user\":\"user3\",\"activities\":[{\"activity\":\"user3\",\"completed\":\"true\"}]}"
 }
 
-5f7d08f89f8f4d00083cbc31
-
 
 {
   "body": "{\"user\":\"user3\",
@@ -34,3 +32,16 @@
         
         ]}"
   }
+
+  {
+    user: user,
+    activities: [{
+      activity: activityValue.activity,
+      image: activityValue.image,
+      cover: activityValue.cover,
+      description: activityValue.description,
+      completed: false
+    }]
+  }
+
+  {"user":"example","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false},{"activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}]}

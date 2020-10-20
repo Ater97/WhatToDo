@@ -3,14 +3,46 @@
     function: activities
   response:
     status: 200
-- name: getFavorites endpoint returns  # the name of the test. used for running a specific test & in CLI output
+- name: create Favorites endpoint returns 200 # the name of the test. used for running a specific test & in CLI output
   endpoint: # this is used to specify which HTTP endpoint / lambda to test against
     # specifying only the function name only works if the function has only one HTTP endpoint and
     # a specific path & method (i.e. not ANY or {parameterizedUrls})
     function: favorites
-  response: true # setting response to true is equivalent to setting it to {status: 200}
+    method: POST
+    path: favorites
+  response: true
   request: # this specifies the request to send
     headers: # An object mapping to be used as headers on the request
-      Foo: bar
-    body: 'foobar' # string literal bodies are used as-is
-    
+      Foo: bar # string literal bodies are used as-is
+    body: {"user":"test","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false},{"activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}]} 
+- name: get Favorites endpoint returns Favs # the name of the test. used for running a specific test & in CLI output
+  endpoint: # this is used to specify which HTTP endpoint / lambda to test against
+    # specifying only the function name only works if the function has only one HTTP endpoint and
+    # a specific path & method (i.e. not ANY or {parameterizedUrls})
+    function: favorites
+    method: GET
+    path: favorites/test
+  response: {"_id":{"$oid":"5f8002d0e9b3ea98c7187dd2"},"user":"test","activities":[{"_id":{"$oid":"5f7e9242f2197500071fb669"},"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false},{"_id":{"$oid":"5f7e9242f2197500071fb669"},"activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}],"__v":{"$numberInt":"0"}} # setting response to true is equivalent to setting it to {status: 200}    
+- name: update Favorites endpoint returns 200 # the name of the test. used for running a specific test & in CLI output
+  endpoint: # this is used to specify which HTTP endpoint / lambda to test against
+    # specifying only the function name only works if the function has only one HTTP endpoint and
+    # a specific path & method (i.e. not ANY or {parameterizedUrls})
+    function: favorites
+    method: POST
+    path: favorites/test
+  response: {"OK"}
+  request: # this specifies the request to send
+    headers: # An object mapping to be used as headers on the request
+      Foo: bar # string literal bodies are used as-is
+    body: {"user":"test","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false}]} # setting response to true is equivalent to setting it to {status: 200}    
+- name: delete Favorite endpoint returns OK # the name of the test. used for running a specific test & in CLI output
+  endpoint: # this is used to specify which HTTP endpoint / lambda to test against
+    # specifying only the function name only works if the function has only one HTTP endpoint and
+    # a specific path & method (i.e. not ANY or {parameterizedUrls})
+    function: favorites
+    method: DELETE
+    path: favorites/5f8e6f8d55537e000831f4b3
+  response: {"OK"}
+
+
+
