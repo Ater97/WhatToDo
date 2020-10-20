@@ -41,7 +41,7 @@
     # a specific path & method (i.e. not ANY or {parameterizedUrls})
     function: favorites
     method: DELETE
-    path: favorites/5f8e6f8d55537e000831f4b3
+    path: favorites/5f8e6ffa618da5000872ac2f
   response: {"OK"}
 
 

@@ -45,3 +45,5 @@
   }
 
   {"user":"example","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false},{"activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}]}
+
+  {"_id":{"$oid":"5f8002d0e9b3ea98c7187dd2"},"user":"test","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false}]} 

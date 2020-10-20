@@ -21,9 +21,10 @@ export class RecomendationComponent implements OnInit {
     this.activityService.getActivities(null)
       .subscribe(
         res => {
-          console.log(res.activities)
-          this.activities = res.activities,
-          this.showLoading = false
+          this.fillActivities(res.activities),
+            //console.log(res.activities),
+            //this.activities = res.activities,
+            this.showLoading = false
         },
         err => {
           this.showLoading = true,
@@ -33,6 +34,32 @@ export class RecomendationComponent implements OnInit {
   }
 
   onSelect(activity: Activity) {
+
     this.selectedActivity = activity;
+  }
+
+  fillActivities(activitiesArr = []) {
+    if (activitiesArr.length >= 5) {
+      let randomArr = this.getRandomArray(activitiesArr.length)
+      console.log(randomArr)
+      for (let i in randomArr) {
+        this.activities.push(activitiesArr[randomArr[i]])
+      }
+      console.log(this.activities)
+    }
+  }
+
+  getRandomArray(lenght: number) {
+    let random = [];
+    for (let i = 0; i < 5; i++) {
+      let num = Math.floor(Math.random() * (lenght));
+      if (random.indexOf(num) < 0) {
+        random.push(num)
+      }
+      else {
+        i--
+      }
+    }
+    return random;
   }
 }
