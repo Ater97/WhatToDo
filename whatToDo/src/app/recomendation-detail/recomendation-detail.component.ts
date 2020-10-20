@@ -23,7 +23,7 @@ export class RecomendationDetailComponent implements OnInit {
     Auth.currentAuthenticatedUser({
       bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(user => {
-      console.log(user.username),
+      //console.log(user.username),
         this.currentUser = user.username,
         this.favoriteService.getFavorites(user.username)
           .subscribe(
@@ -43,7 +43,6 @@ export class RecomendationDetailComponent implements OnInit {
       this.favoriteService.createFavorites(activityValue, this.currentUser);
     }
     else {
-
       let item1 = this.favorites.find(i => i.activity === activityValue.activity);
       //console.log(item1);
       if (typeof item1 === 'undefined') { //if doesnt exits add it

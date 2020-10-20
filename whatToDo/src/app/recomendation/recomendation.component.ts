@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Activity } from '../shared/activity';
 import { ActivityService } from '../services/activity.service';
-import { StateService, State } from '../services/state.service';
+import { ActivatedRoute } from '@angular/router';
+import { QuestionForCreation } from '../shared/questionForCreation';
+import { withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recomendation',
@@ -14,14 +16,16 @@ export class RecomendationComponent implements OnInit {
   selectedActivity: Activity;
   showLoading: boolean = true
   @Input() question: (args: any) => void;
-  constructor(private activityService: ActivityService, private stateService: StateService) { }
+  constructor(private activityService: ActivityService,
+
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     //this.activities = this.activityService.getActivities();
     this.activityService.getActivities(null)
       .subscribe(
         res => {
-          this.fillActivities(res.activities),
+          this.filterActivities(res.activities),
             //console.log(res.activities),
             //this.activities = res.activities,
             this.showLoading = false
@@ -38,6 +42,23 @@ export class RecomendationComponent implements OnInit {
     this.selectedActivity = activity;
   }
 
+  filterActivities(activitiesArr: Activity[]) {
+    console.log(activitiesArr)
+    let question: QuestionForCreation = {
+      participants: +this.route.snapshot.paramMap.get('participants'),
+      budget: +this.route.snapshot.paramMap.get('budget'),
+      time: +this.route.snapshot.paramMap.get('time'),
+      intensity: (+this.route.snapshot.paramMap.get('intensity')==1) ?  "low": (+this.route.snapshot.paramMap.get('intensity')==2) ? "normal" : "hardcore"
+    }
+    console.log(question);
+    let i = -1
+    let actiivitiesToShow = activitiesArr.filter(
+      f => f.intensity==question.intensity && f.budget<=question.budget && f.time<=question.time
+    )
+    console.log(actiivitiesToShow)
+    this.fillActivities(actiivitiesToShow)
+  }
+
   fillActivities(activitiesArr = []) {
     if (activitiesArr.length >= 5) {
       let randomArr = this.getRandomArray(activitiesArr.length)
@@ -46,6 +67,9 @@ export class RecomendationComponent implements OnInit {
         this.activities.push(activitiesArr[randomArr[i]])
       }
       console.log(this.activities)
+    } 
+    else {
+      this.activities = activitiesArr
     }
   }
 
