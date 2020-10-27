@@ -3,7 +3,7 @@ import { Activity } from '../shared/activity';
 import { ActivityService } from '../services/activity.service';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionForCreation } from '../shared/questionForCreation';
-import { withLatestFrom } from 'rxjs/operators';
+import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-recomendation',
@@ -15,17 +15,25 @@ export class RecomendationComponent implements OnInit {
   activities = [];
   selectedActivity: Activity;
   showLoading: boolean = true
+  questionAsked: QuestionForCreation = {
+    participants: +this.route.snapshot.paramMap.get('participants'),
+    budget: +this.route.snapshot.paramMap.get('budget'),
+    time: +this.route.snapshot.paramMap.get('time'),
+    intensity: (+this.route.snapshot.paramMap.get('intensity')==1) ?  "low": (+this.route.snapshot.paramMap.get('intensity')==2) ? "normal" : "hardcore"
+  }
+
   @Input() question: (args: any) => void;
   constructor(private activityService: ActivityService,
-
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private filterService: FilterService) { }
 
   ngOnInit() {
     //this.activities = this.activityService.getActivities();
     this.activityService.getActivities(null)
       .subscribe(
         res => {
-          this.filterActivities(res.activities),
+            this.activities = this.filterService.filterActivities(res.activities,this.questionAsked),
+            //this.filterActivities(res.activities),
             //console.log(res.activities),
             //this.activities = res.activities,
             this.showLoading = false
@@ -41,7 +49,7 @@ export class RecomendationComponent implements OnInit {
 
     this.selectedActivity = activity;
   }
-
+/*
   filterActivities(activitiesArr: Activity[]) {
     console.log(activitiesArr)
     let question: QuestionForCreation = {
@@ -85,5 +93,5 @@ export class RecomendationComponent implements OnInit {
       }
     }
     return random;
-  }
+  }*/
 }
