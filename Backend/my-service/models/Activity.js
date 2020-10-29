@@ -41,19 +41,19 @@ const model = mongoose.model('Activity', {
         required: true,
     },
     participantsMax: {
-        type: Int32,
+        type: Number,
         required: false,
     },
     participantsMin: {
-        type: Int32,
+        type: Number,
         required: false,
     },
     budget: {
-        type: Double,
+        type: Number,
         required: false,
     },
     time: {
-        type: Double,
+        type: Number,
         required: true,
     },
     intensity: {

@@ -60,11 +60,12 @@ provider:
 functions:
   activities:
     handler: handler.getActivities
+    description: GET /api/v1/activities
     events:
       - http: 
           path: activities
           method: get
-          cors: true
+          cors: yes
   favorites:
     handler: favorites.getFavorites
     events:
