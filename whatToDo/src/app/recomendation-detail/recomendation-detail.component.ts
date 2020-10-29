@@ -41,6 +41,8 @@ export class RecomendationDetailComponent implements OnInit {
   public addToFavorites = (activityValue) => {
     if (this.favorites.length < 1) { //create new favorites
       this.favoriteService.createFavorites(activityValue, this.currentUser);
+      console.log('snackbar')
+      this.openSnackBar(activityValue.activity + ' added');
     }
     else {
       let item1 = this.favorites.find(i => i.activity === activityValue.activity);
