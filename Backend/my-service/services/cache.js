@@ -6,7 +6,7 @@ const util = require("util");
 
 const client = redis.createClient({
   host: process.env.REDIS_URL,
-  port: 6379,
+  port: process.env.PORT,
   retry_strategy: () => 1000
 });
 
