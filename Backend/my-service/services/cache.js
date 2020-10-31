@@ -1,49 +1,57 @@
-const mongoose = require('mongoose');
-const redis = require('redis');
-const util = require('util');
-const redisUrl = process.env.REDIS_URL;
 
-const client = redis.createClient(redisUrl);client.auth(process.env.REDIS_AUTH);
+const mongoose = require("mongoose");
+const redis = require("redis");
+//const keys = require("../config/keys");
+const util = require("util");
+
+const client = redis.createClient({
+  host: process.env.REDIS_URL,
+  port: 6379,
+  retry_strategy: () => 1000
+});
+
 client.hget = util.promisify(client.hget);
+const exec = mongoose.Query.prototype.exec;
 
-// This stores a reference to the original exec function
-const exec = mongoose.Query.prototype.exec;mongoose.Query.prototype.cache = function (options = {}) {
-  // this is equal to the query instance
+mongoose.Query.prototype.cache = function(options = { time: 60 }) {
   this.useCache = true;
-  // cache key for top level property
-  this.hashKey = JSON.stringify(options.key || 'default');
-  // to make this a chainable function call, return this
+  this.time = options.time;
+  this.hashKey = JSON.stringify(options.key || this.mongooseCollection.name);
+
   return this;
-};// Override the exec function
-mongoose.Query.prototype.exec = async function () {
-  // if useCache is not set to true, then don't run any of the logic below
+};
+
+mongoose.Query.prototype.exec = async function() {
   if (!this.useCache) {
-    return exec.apply(this, arguments);
-  }// Run the following before any query is executed by Mongo
-  const key = JSON.stringify(
-    Object.assign({}, this.getQuery(), {
-      collection: this.mongooseCollection.name,
-    })
-  );// See if we have a value for 'key' in redis
-  const cacheValue = await client.hget(this.hashKey, key);// If we do, return the cached value
-  if (cacheValue) {const document = JSON.parse(cacheValue);
-    // Anything that comes out of Redis is in JSON form
-    // so we need to parse it
-    // and then return a Mongoose model instance// this.model represents the model that this query is attached to
-    // we can create a new instance of it
-    return Array.isArray(document)
-      ? document.map((doc) => {
-          // Hyrdate values
-          return new this.model(doc);
-        })
-      : new this.model(document);
+    return await exec.apply(this, arguments);
   }
-  // Otherwise, issue the query and store the result in redis
+
+  const key = JSON.stringify({
+    ...this.getQuery()
+  });
+
+  const cacheValue = await client.hget(this.hashKey, key);
+
+  if (cacheValue) {
+    const doc = JSON.parse(cacheValue);
+
+    console.log("Response from Redis");
+    return Array.isArray(doc)
+      ? doc.map(d => new this.model(d))
+      : new this.model(doc);
+  }
+
   const result = await exec.apply(this, arguments);
-  // Set cache expiration
-  client.hset(this.hashKey, key, JSON.stringify(result));return result;
-};module.exports = {
-  clearHash(hashKey) {
+  console.log(this.time);
+  client.hset(this.hashKey, key, JSON.stringify(result));
+  client.expire(this.hashKey, this.time);
+
+  console.log("Response from MongoDB");
+  return result;
+};
+
+module.exports = {
+  clearKey(hashKey) {
     client.del(JSON.stringify(hashKey));
-  },
+  }
 };

@@ -1,35 +1,29 @@
-const mongoose = require('mongoose');
-const Activity = require('./models/Activity');
-const util = require('./utils');
-require('./services/cache');
-const { connectDB } = require('./db');('use strict');module.exports.handler = async (event) => {
-  try {const response = await connectDB().then(async () => {
-      const activities = await Activity.find().cache();
-      console.log('Successfully fetched activities from db');return {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Headers": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(activities),
-      };
-    });mongoose.connection.close();return response;} catch (err) {
-    console.log('Encountered an error:', err);return {
-      statusCode: err.statusCode ? err.statusCode : 500,
-      headers: {
-        "Access-Control-Allow-Headers": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        error: err.name ? err.name : 'Exception',
-        message: err.message ? err.message : 'Unknown error',
-      }),
-    };
-  }
-};
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+//const keys = require("./config/keys");
 
+require("./services/cache");
+require("./models/Activity");
 
-/*'use strict';
+const app = express();
+app.use(bodyParser.json());
+
+mongoose.connect('mongodb+srv://admin:vpuLbU9XzBoLSQRN@cluster0.o88g9.mongodb.net/what_to_do?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+require("./routes/activityRoutes")(app);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Listening on port`, PORT);
+});
+///////////////////////////////////////////
+
+/*
+'use strict';
 const dbjs = require('./db.js');
 module.exports.getActivities = async event => {
   const db = await dbjs.get();
@@ -46,4 +40,5 @@ module.exports.getActivities = async event => {
       activities: activities
     })
   };
-};*/
+};
+*/

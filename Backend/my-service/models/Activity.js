@@ -1,6 +1,6 @@
-const { Double, Int32 } = require('bson');
-const mongoose = require('mongoose');
-const validator = require('validator');
+const mongoose = require("mongoose");
+const { Schema, model } = require('mongoose');
+
 /**
      {"_id":{"$oid":"5f70dd8486da3c00d3644735"},
      "activity":"Sleep",
@@ -13,54 +13,38 @@ const validator = require('validator');
      "time":{"$numberDouble":"0"},
      "intensity":"low"}
  */
-const model = mongoose.model('Activity', {
+
+const ActivitySchema = new Schema({
+    _id: {
+      type: String
+    },
     activity: {
-        type: String,
-        required: true,
-        validate: {
-            validator(activity) {
-                return validator.isAlphanumeric(activity);
-            },
-        },
+      type: String,
+      required: true,
     },
     image: {
-        type: String,
-        required: true,
-        /* validate: {
-             validator(activities) {
-                 return validator.isAlphanumeric(activities);
-             },
-         },*/
+      type: String,
     },
     cover: {
-        type: String,
-        required: true,
+      type: String,
     },
     description: {
-        type: String,
-        required: true,
+      type: String,
     },
     participantsMax: {
-        type: Number,
-        required: false,
+      type: Number,
     },
     participantsMin: {
-        type: Number,
-        required: false,
-    },
-    budget: {
-        type: Number,
-        required: false,
+      type: Number,
     },
     time: {
-        type: Number,
-        required: true,
+      type: Number,
     },
     intensity: {
-        type: String,
-        required: true,
+      type: String,
     }
-    
-});
-
-module.exports = model;
+  });
+  
+mongoose.model("Activity", ActivitySchema);
+//const Activity = model('activities', ActivitySchema);
+//module.exports = Activity;
