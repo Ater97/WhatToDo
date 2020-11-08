@@ -133,6 +133,10 @@ functions:
 #    environment:
 #      variable2: value2
 
+plugins:
+  - serverless-aws-documentation
+
+
 # you can add CloudFormation resource templates here
 #resources:
 #  Resources:
