@@ -1,22 +1,21 @@
----
 openapi: 3.0.1
 info:
-  title: defaultTitle
-  description: defaultDescription
-  version: 0.1
+  title: What To Do APIs
+  description: Essentials APIs to retrieve the activities recommendations and the CRUD of favorites activities. 
+  version: '0.1'
 servers:
-- url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+  - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
 paths:
   /dev/activities:
     get:
       description: Auto generated using Swagger Inspector
       responses:
-        "200":
+        '200':
           description: Auto generated using Swagger Inspector
       servers:
-      - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+        - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
     servers:
-    - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+      - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
   /dev/favorites:
     post:
       description: Auto generated using Swagger Inspector
@@ -44,10 +43,23 @@ paths:
                 user:
                   type: string
             examples:
-              "0":
-                value: "{\n  \"user\":\"test\",  \n  \"activities\":[      \n      {\n        \"activity\":\"Camping\",\n        \"image\":\"/assets/images/camping.jpg\",\n        \"cover\":\"/assets/covers/camping.jpg\",\n        \"description\":\"Recreational activity in which participants take up temporary residence in the outdoors, usually using tents or specially designed or adapted vehicles\",\n        \"completed\":\"true\"\n      }\n    ]\n}\n "
+              '0':
+                value: |-
+                  {
+                    "user":"test",  
+                    "activities":[      
+                        {
+                          "activity":"Camping",
+                          "image":"/assets/images/camping.jpg",
+                          "cover":"/assets/covers/camping.jpg",
+                          "description":"Recreational activity in which participants take up temporary residence in the outdoors, usually using tents or specially designed or adapted vehicles",
+                          "completed":"true"
+                        }
+                      ]
+                  }
+                   
       responses:
-        "200":
+        '200':
           description: Auto generated using Swagger Inspector
           content:
             application/json:
@@ -57,17 +69,17 @@ paths:
                   user:
                     type: string
               examples:
-                "0":
+                '0':
                   value: '{"user":"test"}'
       servers:
-      - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+        - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
     servers:
-    - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+      - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
   /dev/favorites/5f9a58884c68eb0008a7b50c:
     delete:
       description: Auto generated using Swagger Inspector
       responses:
-        "200":
+        '200':
           description: Auto generated using Swagger Inspector
           content:
             application/json:
@@ -75,12 +87,12 @@ paths:
                 type: object
                 properties: {}
               examples:
-                "0":
+                '0':
                   value: '"Ok"'
       servers:
-      - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+        - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
     servers:
-    - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+      - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
   /dev/favorites/5fa75c9b3f501000093798df:
     put:
       description: Auto generated using Swagger Inspector
@@ -110,10 +122,24 @@ paths:
                 user:
                   type: string
             examples:
-              "0":
-                value: "{\n  \"_id\":\"5fa75c9b3f501000093798df\",    \n  \"user\":\"test\",  \n  \"activities\":[      \n      {\n        \"activity\":\"Camping\",\n        \"image\":\"/assets/images/camping.jpg\",\n        \"cover\":\"/assets/covers/camping.jpg\",\n        \"description\":\"Recreational activity in which participants take up temporary residence in the outdoors, usually using tents or specially designed or adapted vehicles\",\n        \"completed\":\"true\"\n      }\n    ]\n}\n "
+              '0':
+                value: |-
+                  {
+                    "_id":"5fa75c9b3f501000093798df",    
+                    "user":"test",  
+                    "activities":[      
+                        {
+                          "activity":"Camping",
+                          "image":"/assets/images/camping.jpg",
+                          "cover":"/assets/covers/camping.jpg",
+                          "description":"Recreational activity in which participants take up temporary residence in the outdoors, usually using tents or specially designed or adapted vehicles",
+                          "completed":"true"
+                        }
+                      ]
+                  }
+                   
       responses:
-        "200":
+        '200':
           description: Auto generated using Swagger Inspector
           content:
             application/json:
@@ -121,17 +147,17 @@ paths:
                 type: object
                 properties: {}
               examples:
-                "0":
+                '0':
                   value: '"Ok"'
       servers:
-      - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+        - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
     servers:
-    - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+      - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
   /dev/favorites/example:
     get:
       description: Auto generated using Swagger Inspector
       responses:
-        "200":
+        '200':
           description: Auto generated using Swagger Inspector
           content:
             application/json:
@@ -139,9 +165,14 @@ paths:
                 type: object
                 properties: {}
               examples:
-                "0":
-                  value: '[{"_id":"5f8002d0e9b3ea98c7187dd2","user":"example","activities":[{"_id":"5f7e9242f2197500071fb669","activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There''s no need of desc","completed":false},{"_id":"5f7e9242f2197500071fb669","activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}],"__v":0}]'
+                '0':
+                  value: >-
+                    [{"_id":"5f8002d0e9b3ea98c7187dd2","user":"example","activities":[{"_id":"5f7e9242f2197500071fb669","activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's
+                    no need of
+                    desc","completed":false},{"_id":"5f7e9242f2197500071fb669","activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A
+                    quintessential ConFusion experience, is it a vada or is it a
+                    donut?","completed":true}],"__v":0}]
       servers:
-      - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+        - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
     servers:
-    - url: https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com
+      - url: 'https://zeogv1yqwa.execute-api.us-east-1.amazonaws.com'
