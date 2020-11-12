@@ -54,6 +54,7 @@ export class FavoritesComponent implements OnInit {
 
   onSelect = (activity: FavoriteActivity): void => {
     //this.ngOnInit();
+    console.log(activity)
     this.selectedActivity = activity;
   }
 

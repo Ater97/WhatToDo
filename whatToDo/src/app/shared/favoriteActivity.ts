@@ -4,5 +4,6 @@ export class FavoriteActivity {
     image: string;
     cover: string; //1920x480
     description: string;
+    budget: number;
     completed: boolean;
 }

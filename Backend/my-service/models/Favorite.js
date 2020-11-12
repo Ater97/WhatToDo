@@ -16,6 +16,7 @@ const ActivitieSchema = new mongoose.Schema({
     image: String,
     cover: String,
     description: String,
+    budget: Number,
     completed: Boolean,
   });
 

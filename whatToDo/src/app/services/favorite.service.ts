@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FavoriteActivity } from '../shared/favoriteActivity';
-import { FAVORITES } from '../shared/favorites';
+//import { FAVORITES } from '../shared/favorites';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -29,6 +29,7 @@ export class FavoriteService {
         image: activityValue.image,
         cover: activityValue.cover,
         description: activityValue.description,
+        budget: activityValue.budget,
         completed: false
       }]
     }

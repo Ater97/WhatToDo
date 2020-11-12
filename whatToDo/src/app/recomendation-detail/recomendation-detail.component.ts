@@ -53,6 +53,7 @@ export class RecomendationDetailComponent implements OnInit {
           image: activityValue.image,
           cover: activityValue.cover,
           description: activityValue.description,
+          budget: activityValue.budget,
           completed: false
         }
         console.log('snackbar')

@@ -14,7 +14,7 @@
   request: # this specifies the request to send
     headers: # An object mapping to be used as headers on the request
       Foo: bar # string literal bodies are used as-is
-    body: {"user":"test","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","completed":false},{"activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}]} 
+    body: {"user":"test","activities":[{"activity":"Eat","image":"/assets/images/eat.png","cover":"/assets/covers/eat.jpg","description":"There's no need of desc","budget":"10","completed":false},{"activity":"Camping","image":"/assets/images/camping.jpg","cover":"/assets/covers/camping.jpg","description":"A quintessential ConFusion experience, is it a vada or is it a donut?","completed":true}]} 
 - name: get Favorites endpoint returns Favs # the name of the test. used for running a specific test & in CLI output
   endpoint: # this is used to specify which HTTP endpoint / lambda to test against
     # specifying only the function name only works if the function has only one HTTP endpoint and
