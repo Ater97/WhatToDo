@@ -65,22 +65,28 @@ export class RecomendationComponent implements OnInit {
   }
 
   fillActivities(activitiesArr = []) {
+    console.log(activitiesArr)
     if (activitiesArr.length >= 5) {
-      let randomArr = this.getRandomArray(activitiesArr.length)
-      //console.log(randomArr)
+      let randomArr = this.getRandomArray(activitiesArr.length,5)
+      console.log(randomArr)
       for (let i in randomArr) {
         this.activities.push(activitiesArr[randomArr[i]])
       }
       //console.log(this.activities)
     } 
     else {
-      this.activities = activitiesArr
+      //this.activities = activitiesArr
+      let randomArr = this.getRandomArray(activitiesArr.length,activitiesArr.length)
+      console.log(randomArr)
+      for (let i in randomArr) {
+        this.activities.push(activitiesArr[randomArr[i]])
+      }
     }
   }
 
-  getRandomArray(lenght: number) {
+  getRandomArray(lenght: number, k: number) {
     let random = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < k; i++) {
       let num = Math.floor(Math.random() * (lenght));
       if (random.indexOf(num) < 0) {
         random.push(num)
