@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ɵConsole } from '@angular/core';
 import { Activity } from '../shared/activity';
 import { ActivityService } from '../services/activity.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,12 +13,13 @@ export class RecomendationComponent implements OnInit {
 
   activities = [];
   selectedActivity: Activity;
+  showEmpty: boolean = false
   showLoading: boolean = true
   questionAsked: QuestionForCreation = {
     participants: +this.route.snapshot.paramMap.get('participants'),
     budget: +this.route.snapshot.paramMap.get('budget'),
     time: +this.route.snapshot.paramMap.get('time'),
-    intensity: (+this.route.snapshot.paramMap.get('intensity')==1) ?  "low": (+this.route.snapshot.paramMap.get('intensity')==2) ? "normal" : "hardcore"
+    intensity: (+this.route.snapshot.paramMap.get('intensity') == 1) ? "low" : (+this.route.snapshot.paramMap.get('intensity') == 2) ? "normal" : "hardcore"
   }
 
   @Input() question: (args: any) => void;
@@ -30,10 +31,11 @@ export class RecomendationComponent implements OnInit {
     this.activityService.getActivities(null)
       .subscribe(
         res => {
-            this.filterActivities(res.activities),
+          this.filterActivities(res.activities),
             //console.log(res.activities),
             //this.activities = res.activities,
             this.showLoading = false
+          //this.showEmpty = false
         },
         err => {
           this.showLoading = true,
@@ -53,12 +55,12 @@ export class RecomendationComponent implements OnInit {
       participants: +this.route.snapshot.paramMap.get('participants'),
       budget: +this.route.snapshot.paramMap.get('budget'),
       time: +this.route.snapshot.paramMap.get('time'),
-      intensity: (+this.route.snapshot.paramMap.get('intensity')==1) ?  "low": (+this.route.snapshot.paramMap.get('intensity')==2) ? "normal" : "hardcore"
+      intensity: (+this.route.snapshot.paramMap.get('intensity') == 1) ? "low" : (+this.route.snapshot.paramMap.get('intensity') == 2) ? "normal" : "hardcore"
     }
     //console.log(question);
     let i = -1
     let actiivitiesToShow = activitiesArr.filter(
-      f => f.intensity==question.intensity && f.budget<=question.budget && f.time<=question.time
+      f => f.intensity == question.intensity && f.budget <= question.budget && f.time <= question.time
     )
     //console.log(actiivitiesToShow)
     this.fillActivities(actiivitiesToShow)
@@ -67,21 +69,28 @@ export class RecomendationComponent implements OnInit {
   fillActivities(activitiesArr = []) {
     console.log(activitiesArr)
     if (activitiesArr.length >= 5) {
-      let randomArr = this.getRandomArray(activitiesArr.length,5)
+      let randomArr = this.getRandomArray(activitiesArr.length, 5)
       console.log(randomArr)
       for (let i in randomArr) {
         this.activities.push(activitiesArr[randomArr[i]])
       }
       //console.log(this.activities)
-    } 
+    }
     else {
-      //this.activities = activitiesArr
-      let randomArr = this.getRandomArray(activitiesArr.length,activitiesArr.length)
-      console.log(randomArr)
-      for (let i in randomArr) {
-        this.activities.push(activitiesArr[randomArr[i]])
+      if (activitiesArr.length == 0) {
+        console.log("try again")
+        this.showEmpty = true
+      }
+      else {
+        //this.activities = activitiesArr
+        let randomArr = this.getRandomArray(activitiesArr.length, activitiesArr.length)
+        console.log(randomArr)
+        for (let i in randomArr) {
+          this.activities.push(activitiesArr[randomArr[i]])
+        }
       }
     }
+
   }
 
   getRandomArray(lenght: number, k: number) {

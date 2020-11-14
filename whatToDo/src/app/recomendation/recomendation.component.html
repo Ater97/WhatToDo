@@ -10,7 +10,12 @@
       <br>
     </div>
   </div>
- 
+
+  <div *ngIf="showEmpty">
+    <img  class="images" src='/assets/TrySomethinElse.png'/>
+    <p style="font-weight: bold; font-size-adjust: 0.58; font-size: 150%;">Please try to increase your budget and time.</p>
+  </div>
+
   <div fxFlex class="Loading">
     <div *ngIf="showLoading">
       <mat-spinner></mat-spinner>

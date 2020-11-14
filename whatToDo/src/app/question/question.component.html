@@ -1,8 +1,13 @@
 <div class="main">
    <mat-toolbar>
    </mat-toolbar>
+   
    <mat-card class="my-card" id="mat-card">
+      <mat-card-header>
+         <mat-card-title>Please fill in the questions so we can recommend an activity</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
+         <br>
          <form class="my-form" [formGroup]="questionForm" autocomplete="off" novalidate
             (ngSubmit)="askQuestion(questionForm.value)">
             <mat-card-content>

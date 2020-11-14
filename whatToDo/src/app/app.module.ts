@@ -48,9 +48,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     
     RouterModule.forRoot([
-      { path: '', redirectTo: '/', pathMatch: 'full' },
+      { path: '', redirectTo: '/question', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponent },
-      { path: 'login', component: LoginComponent },
+      { path: 'footer', component: LoginComponent },
       { path: 'recomendation', component: RecomendationComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'recomendation', component: RecomendationComponent },
