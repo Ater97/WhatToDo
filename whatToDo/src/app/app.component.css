@@ -35,14 +35,5 @@ color: white;
   --amplify-primary-color: #008000;
   --amplify-primary-tint: #0000FF; 
   --amplify-primary-shade: #008000;
+  }
 
-  }
-  footer {
-    background-color: #163577c9;
-    border-top: 1px solid #bbb;
-    text-align: center;
-    position: fixed; 
-    bottom: 0; 
-    width: 100%; 
-    color: #FFFFFF;
-  }
