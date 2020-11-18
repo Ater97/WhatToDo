@@ -60,7 +60,8 @@ export class RecomendationComponent implements OnInit {
     //console.log(question);
     let i = -1
     let actiivitiesToShow = activitiesArr.filter(
-      f => f.intensity == question.intensity && f.budget <= question.budget && f.time <= question.time
+      activityToShow => activityToShow.intensity == question.intensity && activityToShow.budget <= question.budget && activityToShow.time <= question.time 
+      && activityToShow.participantsMax >= question.participants && activityToShow.participantsMin <= question.participants
     )
     //console.log(actiivitiesToShow)
     this.fillActivities(actiivitiesToShow)

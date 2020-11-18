@@ -16,7 +16,7 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.questionForm = new FormGroup({
-      participants: new FormControl('10', [Validators.required, Validators.min(1), Validators.max(30)]),
+      participants: new FormControl('2', [Validators.required, Validators.min(1), Validators.max(30)]),
       budget: new FormControl('50', [Validators.required, Validators.min(0)]),
       time: new FormControl('3', [Validators.required, Validators.min(1)]),
       intensity: new FormControl('', [Validators.required, Validators.min(1)])
